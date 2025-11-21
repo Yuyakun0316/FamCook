@@ -1,6 +1,12 @@
 <div class="auth-container">
   <div class="auth-logo">🍚 FamCook</div>
 
+  <% if flash[:alert] %>
+  <div class="error-messages">
+    <p>⚠️ <%= flash[:alert] %></p>
+  </div>
+<% end %>
+
   <div class="auth-box">
     <%= form_with scope: :user, url: user_session_path, local: true do |f| %>
       <%= f.email_field :email, placeholder: "メールアドレス", class: "auth-input" %>

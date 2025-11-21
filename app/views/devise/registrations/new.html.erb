@@ -1,6 +1,20 @@
 <div class="auth-container">
   <div class="auth-logo">🎀 FamCook 登録</div>
 
+<% if resource.errors.any? %>
+  <div class="error-messages">
+    <% if resource.errors[:name].present? %>
+      <% resource.errors.full_messages_for(:name).each do |msg| %>
+        <p>⚠️ <%= msg %></p>
+      <% end %>
+    <% end %>
+
+    <% resource.errors.full_messages.reject { |m| m.include?("お名前") }.each do |msg| %>
+      <p>⚠️ <%= msg %></p>
+    <% end %>
+  </div>
+<% end %>
+
   <div class="auth-box">
     <%= form_with scope: :user, url: user_registration_path, local: true do |f| %>
       <%= f.text_field :name, placeholder: "お名前", class: "auth-input" %>

@@ -79,3 +79,18 @@ body {
   font-weight: bold;
   text-decoration: underline;
 }
+
+/* エラーメッセージ */
+.error-messages {
+  background: #ffe4e4;
+  border: 1px solid #ffb3b3;
+  padding: 10px;
+  border-radius: 8px;
+  color: #d9534f;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.error-messages p {
+  margin: 0;
+}
