@@ -1,0 +1,30 @@
+<div class="auth-container">
+  <div class="auth-logo">👤 プロフィール編集</div>
+
+  <div class="auth-box">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+      <!-- 名前 -->
+      <%= f.text_field :name, autofocus: true, placeholder: "お名前", class: "auth-input" %>
+
+      <!-- メール -->
+      <%= f.email_field :email, placeholder: "メールアドレス", class: "auth-input" %>
+
+      <!-- パスワード（変更する場合のみ） -->
+      <%= f.password_field :password, placeholder: "新しいパスワード（必要な場合のみ）", class: "auth-input" %>
+
+      <!-- パスワード確認 -->
+      <%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: "auth-input" %>
+
+      <!-- 現在のパスワード（Devise仕様で変更時に必要） -->
+      <%= f.password_field :current_password, placeholder: "現在のパスワード（必須）", class: "auth-input", required: true %>
+
+      <!-- 更新ボタン -->
+      <%= f.submit "更新する", class: "auth-button" %>
+    <% end %>
+
+    <div class="auth-sub">
+      <%= link_to "戻る", homes_index_path %>
+    </div>
+  </div>
+</div>
