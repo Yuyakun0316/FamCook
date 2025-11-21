@@ -1,2 +1,56 @@
-<h1>トップページ</h1>
-<%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "logout-link" %>
+
+<div class="home-container">
+  <!-- ヘッダー -->
+  <header class="home-header">
+    <div class="app-title">🍚 晩ご飯帳</div>
+    <div class="settings-icon">⚙️</div>
+    <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "logout-link" %>
+  </header>
+
+  <!-- カレンダー -->
+  <div class="calendar-card">
+    <h2>今月の献立記録（2025年11月）</h2>
+    <!-- 仮カレンダー（後でJSやgemで実装可能） -->
+    <table class="calendar-table">
+      <tr>
+        <th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th>
+      </tr>
+      <tr>
+        <td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+      </tr>
+      <tr>
+        <td>6</td><td>7</td><td>8</td><td>9</td><td class="today">10</td><td>11</td><td>12</td>
+      </tr>
+      <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+      </tr>
+      <td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
+      </tr>
+      </tr>
+      <td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+      </tr>
+      <!-- ※この表は仮です。 -->
+    </table>
+  </div>
+
+  <!-- 投稿ボタン -->
+  <div class="post-button">
+    📸 今日のご飯を投稿する
+  </div>
+
+  <!-- メッセージ欄（仮） -->
+  <div class="message-card">
+    <div class="message-header">
+      👪 家族のメッセージ
+      <span class="message-link">全て見る</span>
+    </div>
+    <p class="message-comment">まだメッセージはありません。</p>
+  </div>
+</div>
+
+<!-- 下部ナビゲーション -->
+<nav class="bottom-nav">
+  <%= link_to "🏠<br>ホーム".html_safe, homes_index_path, class: "nav-item active" %>
+  <%= link_to "📅<br>献立".html_safe, "#", class: "nav-item" %>
+  <%= link_to "💬<br>メッセージ".html_safe, "#", class: "nav-item" %>
+  <%= link_to "🛍<br>買い物".html_safe, "#", class: "nav-item" %>
+</nav>
