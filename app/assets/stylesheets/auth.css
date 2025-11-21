@@ -71,11 +71,17 @@ body {
 .auth-link, .auth-sub {
   font-size: 13px;
   margin-top: 15px;
-  color: #fff;
+  color: black;
 }
 
-.auth-sub a, .auth-link a {
-  color: #fff;
+.auth-sub a {
+  color: #FF6EA7;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.auth-link a {
+  color: #FF6EA7;
   font-weight: bold;
   text-decoration: underline;
 }
