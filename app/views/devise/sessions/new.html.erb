@@ -1,0 +1,21 @@
+<div class="auth-container">
+  <div class="auth-logo">🍚 FamCook</div>
+
+  <div class="auth-box">
+    <%= form_with scope: :user, url: user_session_path, local: true do |f| %>
+      <%= f.email_field :email, placeholder: "メールアドレス", class: "auth-input" %>
+      <%= f.password_field :password, placeholder: "パスワード", class: "auth-input" %>
+
+      <%= f.submit "ログイン", class: "auth-button" %>
+    <% end %>
+
+    <p class="auth-link">
+      パスワードを忘れた方は <%= link_to "こちら", "#" %>
+    </p>
+  </div>
+
+  <div class="auth-sub">
+    アカウントをお持ちでない方は  
+    <%= link_to "新規登録はこちら", new_user_registration_path %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="auth-container">
+  <div class="auth-logo">🎀 FamCook 登録</div>
+
+  <div class="auth-box">
+    <%= form_with scope: :user, url: user_registration_path, local: true do |f| %>
+      <%= f.text_field :name, placeholder: "お名前", class: "auth-input" %>
+      <%= f.email_field :email, placeholder: "メールアドレス", class: "auth-input" %>
+      <%= f.password_field :password, placeholder: "パスワード（6文字以上）", class: "auth-input" %>
+      <%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: "auth-input" %>
+
+      <%= f.submit "登録する", class: "auth-button" %>
+    <% end %>
+
+    <div class="auth-sub">
+      すでにアカウントをお持ちの方は  
+      <%= link_to "ログインへ戻る", new_user_session_path %>
+    </div>
+  </div>
+</div>

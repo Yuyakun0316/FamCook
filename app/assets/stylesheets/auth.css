@@ -1,0 +1,81 @@
+/* 背景（かわいいピンクグラデーション） */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica", sans-serif;
+  background: linear-gradient(180deg, #FF7EA9, #FFBDD4);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* コンテナ */
+.auth-container {
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+/* ロゴ文字（手書き風） */
+.auth-logo {
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "Comic Sans MS", cursive;
+}
+
+/* 白背景のボックス */
+.auth-box {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* 入力欄 */
+.auth-input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  background: #F8E8F0;
+  color: #444;
+  font-size: 14px;
+  box-sizing: border-box; 
+  display: block;
+}
+
+/* ボタン */
+.auth-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #FF6EA7;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.auth-button:hover {
+  background: #FF5189;
+}
+
+/* リンク系 */
+.auth-link, .auth-sub {
+  font-size: 13px;
+  margin-top: 15px;
+  color: #fff;
+}
+
+.auth-sub a, .auth-link a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: underline;
+}
