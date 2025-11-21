@@ -68,5 +68,9 @@ group :test do
   gem "selenium-webdriver"
 end
 
+group :production do
+  gem 'pg'# Renderで使用
+end
+
 gem 'devise'
 gem 'devise-i18n'# エラーメッセージを日本語化
