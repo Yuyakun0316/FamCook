@@ -1,12 +1,5 @@
 
 <div class="home-container">
-  <!-- ヘッダー -->
-  <header class="home-header">
-    <div class="app-title">🍚 晩ご飯帳</div>
-    <div class="settings-icon">⚙️</div>
-    <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "logout-link" %>
-  </header>
-
   <!-- カレンダー -->
   <div class="calendar-card">
     <h2>今月の献立記録（2025年11月）</h2>
@@ -44,11 +37,3 @@
     <p class="message-comment">まだメッセージはありません。</p>
   </div>
 </div>
-
-<!-- 下部ナビゲーション -->
-<nav class="bottom-nav">
-  <%= link_to "🏠<br>ホーム".html_safe, homes_index_path, class: "nav-item active" %>
-  <%= link_to "📅<br>献立".html_safe, "#", class: "nav-item" %>
-  <%= link_to "💬<br>メッセージ".html_safe, "#", class: "nav-item" %>
-  <%= link_to "🛍<br>買い物".html_safe, "#", class: "nav-item" %>
-</nav>

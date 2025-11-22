@@ -13,3 +13,88 @@
  *= require_tree .
  *= require_self
  */
+
+/* ===================
+   全体背景＆スクロール制御
+=================== */
+html, body {
+  overflow: hidden; /* ← 背景が動かない */
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* ===================
+   スクロールエリア（中身だけ動く）
+=================== */
+.scroll-area {
+  position: absolute;
+  top: 50px;            /* ヘッダーの高さ */
+  bottom: 50px;         /* ナビの高さ */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  overflow-y: auto;     /* ← スクロール可能 */
+  -webkit-overflow-scrolling: touch;
+  background: #FFF5F1;
+  box-sizing: border-box;
+}
+
+/* ===================
+   固定ヘッダー
+=================== */
+.home-header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: white;
+  border: 2px solid #ffd2e0;
+  border-radius: 20px 20px 0 0; /* ←上だけ丸める */
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.app-title {
+  color: #ff6ea7;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* ===================
+   完全固定ナビゲーション
+=================== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  padding: 8px 0;
+  border-radius: 0 0 20px 20px; 
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+  border: 2px solid #ffd2e0;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.nav-item {
+  font-size: 12px;
+  text-align: center;
+  color: #888;
+}
+
+.nav-item.active {
+  color: #ff6ea7;
+}

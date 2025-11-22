@@ -11,6 +11,15 @@
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+  <!-- 固定ヘッダー -->
+  <%= render "shared/header" %>
+
+  <!-- メインエリア（スクロール許可） -->
+  <main class="scroll-area">
+    <%= yield %>  <!-- 各ページの内容 -->
+  </main>
+
+  <!-- 固定フッター -->
+  <%= render "shared/footer" %>
+</body>
 </html>
