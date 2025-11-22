@@ -23,6 +23,6 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:title, :description, :date, :meal_type)
+    params.require(:meal).permit(:title, :description, :date, :meal_type, images: [])
   end
 end
