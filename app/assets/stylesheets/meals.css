@@ -1,0 +1,176 @@
+/* 投稿ページ全体 */
+.meal-form-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+}
+
+/* エラーメッセージ */
+.error-messages p {
+  color: red;
+  font-size: 13px;
+  margin: 5px 0;
+}
+
+/* 画像 */
+.image-preview-area {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.image-slot {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  background: #ffe6ef;
+  border: 2px dashed #ffb6c1;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #ff6ea7;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.image-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.image-slot.has-image {
+  border: none;
+  background-size: cover;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #ff6ea7;
+  color: white;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+  display: none; /* 画像があるときだけ表示 */
+}
+
+.meal-image-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+.image-slot.has-image .delete-btn {
+  display: block;
+}
+
+/* タイトル */
+.meal-form-title {
+  font-size: 22px;
+  color: black;
+  font-weight: bold;
+}
+
+/* カード（白背景の箱） */
+.meal-form-box {
+  background: white;
+  padding: 10px;
+  border-radius: 18px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  border: 2px solid #ffd2e0;
+}
+
+/* ラベルと入力欄 */
+.meal-field {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.meal-field label {
+  font-weight: bold;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.meal-input, .meal-textarea, .meal-field select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ffd2e0;
+  background: #fffafc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* テキストエリア */
+.meal-textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* 画像アップロード欄（ダミー） */
+.meal-image-upload {
+  padding: 15px;
+  color: #999;
+  font-size: 13px;
+  border-radius: 10px;
+  border: 1px dashed #ffd2e0;
+  background: #fffafc;
+  margin-bottom: 10px;
+}
+
+/* 投稿ボタン */
+.meal-submit-button {
+  background: #ff6ea7;
+  color: white;
+  font-size: 16px;
+  padding: 14px;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(255,110,167,0.3);
+  margin-top: 15px;
+}
+
+.meal-submit-button:hover {
+  background: #ff5a90;
+}
+
+/* 戻るボタン */
+.meal-back-button {
+  margin-top: 15px;
+}
+
+.meal-back-link {
+  display: block;
+  padding: 10px;
+  background: #e0e0e0;
+  color: #555;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+.meal-back-link:hover {
+  background: #d0d0d0;
+}
+
+/* PC用調整 */
+@media (min-width: 768px) {
+  .meal-form-container {
+    max-width: 650px;
+  }
+}
