@@ -74,3 +74,5 @@ end
 
 gem 'devise'
 gem 'devise-i18n'# エラーメッセージを日本語化
+gem 'mini_magick'# ImageMagickの機能をRubyで扱える
+gem 'image_processing', '~> 1.2'# MiniMagickでは提供できない、画像サイズを調整する機能

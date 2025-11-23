@@ -1,11 +1,3 @@
-/* ===================
-   全体設定
-=================== */
-html, body {
-  height: 100%;
-  background-attachment: fixed;  /* ← 背景をスクロール固定！ */
-  background-size: cover;
-}
 
 /* ===================
    メインコンテナ
@@ -13,35 +5,14 @@ html, body {
 .home-container {
   max-width: 500px;
   margin: auto;
-  padding: 10px 10px 90px;
+  padding: 10px 10px;
   text-align: center;
-  min-height: calc(100vh - 80px); /* 下ナビ分を引く */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: #FFF5F1;
   border-radius: 10px;
 }
-
-/* ===================
-   ヘッダー
-=================== */
-.home-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 15px;
-  margin-bottom: 20px;
-  font-size: 18px;
-  background-color: white;
-  border: 2px solid #ffd2e0; /* ←ここ追加（淡いピンク） */
-  border-radius: 20px;
-}
-
-.app-title {
-  color: #ff6ea7;
-}
-
 
 /* ===================
    カレンダー専用
@@ -51,37 +22,57 @@ html, body {
   color: black;
   padding: 20px;
   margin: 20px auto;
-  border: 2px solid #ffd2e0; /* ←ここ追加（淡いピンク） */
+  border: 2px solid #ffd2e0;
   border-radius: 20px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
+/* 📆 テーブル調整 */
 .calendar-table {
   width: 100%;
-  text-align: center;
+  table-layout: fixed;
   border-collapse: collapse;
-  padding: 12px 5px;
-  font-size: 16px;         /* 日付を大きく */
-  min-height: 50px;        /* 高さを確保 */
-  position: relative;
 }
 
-.calendar-table th {
-  color: #999;
-  font-size: 12px;
-}
-
+.calendar-table th,
 .calendar-table td {
-  padding: 6px;
-  font-size: 14px;
-  position: relative;
+  width: calc(100% / 7);
 }
 
-.calendar-table .today {
+/* 📆 カレンダーセル */
+.calendar-table td {
+  text-align: center;
+  vertical-align: top;
+  padding: 8px;
+  font-size: 18px;
+  height: 70px;
+  display: table-cell;
+}
+
+/* 日付の数字 */
+.calendar-date {
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+/* 今日の日付 */
+.calendar-table .today .calendar-date {
   background: #ff6ea7;
   color: white;
   border-radius: 50%;
-  padding: 5px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🍽 アイコン */
+.meal-icon {
+  font-size: 20px;
+  margin-top: 4px;
+  line-height: 1.1;
+  cursor: help;  /* hover できる感じを出す */
 }
 
 /* ===================
@@ -107,9 +98,9 @@ html, body {
 .message-card {
   width: 90%;
   margin-bottom: 30px;
-  max-height: 150px;   /* はみ出たらスクロール */
+  max-height: 150px;
   overflow-y: auto;
-  border: 2px solid #ffd2e0; /* ←ここ追加（淡いピンク） */
+  border: 2px solid #ffd2e0;
   margin: 20px auto;
   padding: 20px;
   border-radius: 20px;
@@ -131,34 +122,6 @@ html, body {
 
 .message-comment {
   color: black;
-}
-
-/* ===================
-   ナビゲーション
-=================== */
-.bottom-nav {
-  display: flex;
-  justify-content: space-around;
-  background: white;
-  padding: 8px 0;
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  border-radius: 20px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  border: 2px solid #ffd2e0; /* ←ここ追加（淡いピンク） */
-}
-
-.nav-item {
-  font-size: 12px;
-  text-align: center;
-  color: #888;
-}
-
-.nav-item.active {
-  color: #ff6ea7;
 }
 
 /* ===================

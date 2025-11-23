@@ -1,0 +1,84 @@
+
+<div class="meal-form-container">
+  <h1 class="meal-form-title">🍚 新しい献立を投稿</h1>
+
+    <% if @meal.errors.any? %>
+      <div class="error-messages">
+        <% @meal.errors.full_messages.each do |message| %>
+          <p>⚠️ <%= message %></p>
+        <% end %>
+      </div>
+    <% end %>
+
+  <div class="meal-form-box">
+    <%= form_with model: @meal, local: true, html: { multipart: true } do |f| %>
+
+      <!-- 写真アップロード -->
+      <div class="meal-field">
+        <label>📸 写真の追加（最大3枚）</label>
+
+        <!-- プレビュー枠 -->
+        <div id="preview-container" class="image-preview-area">
+          <div class="image-slot">+</div>
+          <div class="image-slot">+</div>
+          <div class="image-slot">+</div>
+        </div>
+
+        <!-- ファイル選択ボタン -->
+        <%= f.file_field :images, multiple: true, accept: "image/*",
+                          id: "meal-image-upload", class: "meal-image-hidden" %>
+      </div>
+
+      <!-- 食事の時間 -->
+      <div class="meal-field">
+        <label>⏱️ 食事の時間</label>
+        <%= f.select :meal_type, [["朝食", "breakfast"], ["昼食", "lunch"], ["夕食", "dinner"], ["間食/その他", "snack"]], {}, class: "meal-input" %>
+      </div>
+
+      <!-- 日付 -->
+      <div class="meal-field">
+        <label>📅 日付</label>
+        <%= f.date_field :date, class: "meal-input", value: Date.current %>
+      </div>
+
+      <!-- 料理名 -->
+      <div class="meal-field">
+        <label>🍽️ 献立名（メイン）</label>
+        <%= f.text_field :title, class: "meal-input", placeholder: "例：鶏肉の照り焼きとひじきの煮物" %>
+      </div>
+
+      <div class="meal-field">
+        <label>🍽️ 食事アイコン</label>
+        <%= f.select :icon_type, [
+            ["🍚 ごはん系", "rice"],
+            ["🍣 和食系", "japanese"],
+            ["🍝 洋食系", "western"],
+            ["🥟 中華系", "chinese"],
+            ["🐟 魚料理", "fish"],
+            ["🥗 健康・野菜", "healthy"],
+            ["🍔 子ども向け", "kids"],
+            ["🍰 デザート", "dessert"],
+            ["☕️ 飲み物", "drink"]
+          ],
+          { include_blank: "選択してください" },
+          class: "meal-input"%>
+      </div>
+
+      <!-- メモ -->
+      <div class="meal-field">
+        <label>📝 メモ / 感想</label>
+        <%= f.text_area :description, class: "meal-textarea", placeholder: "味や家族の反応など記録しましょう" %>
+      </div>
+
+      <!-- 投稿ボタン -->
+      <div class="meal-submit-area">
+        <%= f.submit "✨ 献立を投稿する", class: "meal-submit-button" %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- 戻るボタン -->
+  <div class="meal-back-button">
+    <%= link_to "＜ 戻る（キャンセル）", root_path, class: "meal-back-link" %>
+  </div>
+</div>
