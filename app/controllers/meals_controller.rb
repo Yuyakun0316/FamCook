@@ -14,7 +14,7 @@ class MealsController < ApplicationController
     @meal.user = current_user
 
     if @meal.save
-      redirect_to root_path, notice: "投稿が完了しました🍽️"
+      redirect_to root_path, notice: '投稿が完了しました🍽️'
     else
       render :new, status: :unprocessable_entity
     end
