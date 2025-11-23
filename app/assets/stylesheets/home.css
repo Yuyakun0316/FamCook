@@ -22,37 +22,57 @@
   color: black;
   padding: 20px;
   margin: 20px auto;
-  border: 2px solid #ffd2e0; /* ←ここ追加（淡いピンク） */
+  border: 2px solid #ffd2e0;
   border-radius: 20px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
+/* 📆 テーブル調整 */
 .calendar-table {
   width: 100%;
-  text-align: center;
+  table-layout: fixed;
   border-collapse: collapse;
-  padding: 12px 5px;
-  font-size: 16px;         /* 日付を大きく */
-  min-height: 50px;        /* 高さを確保 */
-  position: relative;
 }
 
-.calendar-table th {
-  color: #999;
-  font-size: 12px;
-}
-
+.calendar-table th,
 .calendar-table td {
-  padding: 6px;
-  font-size: 14px;
-  position: relative;
+  width: calc(100% / 7);
 }
 
-.calendar-table .today {
+/* 📆 カレンダーセル */
+.calendar-table td {
+  text-align: center;
+  vertical-align: top;
+  padding: 8px;
+  font-size: 18px;
+  height: 70px;
+  display: table-cell;
+}
+
+/* 日付の数字 */
+.calendar-date {
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+/* 今日の日付 */
+.calendar-table .today .calendar-date {
   background: #ff6ea7;
   color: white;
   border-radius: 50%;
-  padding: 5px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🍽 アイコン */
+.meal-icon {
+  font-size: 20px;
+  margin-top: 4px;
+  line-height: 1.1;
+  cursor: help;  /* hover できる感じを出す */
 }
 
 /* ===================
@@ -78,9 +98,9 @@
 .message-card {
   width: 90%;
   margin-bottom: 30px;
-  max-height: 150px;   /* はみ出たらスクロール */
+  max-height: 150px;
   overflow-y: auto;
-  border: 2px solid #ffd2e0; /* ←ここ追加（淡いピンク） */
+  border: 2px solid #ffd2e0;
   margin: 20px auto;
   padding: 20px;
   border-radius: 20px;

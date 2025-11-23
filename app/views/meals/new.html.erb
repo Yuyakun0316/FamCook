@@ -47,6 +47,23 @@
         <%= f.text_field :title, class: "meal-input", placeholder: "例：鶏肉の照り焼きとひじきの煮物" %>
       </div>
 
+      <div class="meal-field">
+        <label>🍽️ 食事アイコン</label>
+        <%= f.select :icon_type, [
+            ["🍚 ごはん系", "rice"],
+            ["🍣 和食系", "japanese"],
+            ["🍝 洋食系", "western"],
+            ["🥟 中華系", "chinese"],
+            ["🐟 魚料理", "fish"],
+            ["🥗 健康・野菜", "healthy"],
+            ["🍔 子ども向け", "kids"],
+            ["🍰 デザート", "dessert"],
+            ["☕️ 飲み物", "drink"]
+          ],
+          { include_blank: "選択してください" },
+          class: "meal-input"%>
+      </div>
+
       <!-- メモ -->
       <div class="meal-field">
         <label>📝 メモ / 感想</label>
