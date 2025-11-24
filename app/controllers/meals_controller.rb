@@ -46,6 +46,12 @@ class MealsController < ApplicationController
     end
   end
 
+  def destroy
+    @meal = current_user.meals.find(params[:id])
+    @meal.destroy
+    redirect_to meals_path, notice: "献立を削除しました 🗑"
+  end
+
   private
 
   def meal_params

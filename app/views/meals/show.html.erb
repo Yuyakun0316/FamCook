@@ -29,8 +29,9 @@
   <!-- ✏️ 編集 / ❌ 削除 -->
   <div class="meal-show-actions">
     <%= link_to "編集", edit_meal_path(@meal), class: "meal-edit-btn" %>
-    <%= link_to "削除", meal_path(@meal), data: { turbo_method: :delete, confirm: "本当に削除しますか？" }, class: "meal-delete-btn" %>
-  </div>
+    <%= link_to "削除", meal_path(@meal),
+        data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？\n削除したデータは戻せません。" },
+        class: "meal-delete-btn" %>
 
   <!-- 🔮 AI献立アシスタント（ビューのみ） -->
   <div class="meal-ai-box">
