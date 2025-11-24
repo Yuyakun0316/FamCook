@@ -1,0 +1,48 @@
+<div class="meal-show-container">
+<h2 class="meals-index-title">献立詳細</h2>
+
+  <!-- 📸 写真 -->
+  <div class="meal-show-image">
+    <% if @meal.images.attached? %>
+      <%= image_tag @meal.images.first.variant(resize_to_limit: [800, 600]), class: "meal-show-img" %>
+    <% else %>
+      <div class="meal-no-img">画像なし</div>
+    <% end %>
+  </div>
+
+  <!-- 📅 日付 -->
+  <div class="meal-show-date">
+    <%= @meal.date.strftime("%Y年 %-m月%-d日（#{%w(日 月 火 水 木 金 土)[@meal.date.wday]}）") %>
+  </div>
+
+  <!-- 🍽 献立名 -->
+  <h2 class="meal-show-title"><%= @meal.title %></h2>
+
+  <!-- 📝 メモ -->
+    <div class="meal-show-description">
+      <h3>メモ・感想</h3>
+      <div class="meal-text">
+        <%= simple_format(@meal.description) %>
+      </div>
+  </div>
+
+  <!-- ✏️ 編集 / ❌ 削除 -->
+  <div class="meal-show-actions">
+    <%= link_to "編集", edit_meal_path(@meal), class: "meal-edit-btn" %>
+    <%= link_to "削除", meal_path(@meal), data: { turbo_method: :delete, confirm: "本当に削除しますか？" }, class: "meal-delete-btn" %>
+  </div>
+
+  <!-- 🔮 AI献立アシスタント（ビューのみ） -->
+  <div class="meal-ai-box">
+    <h3>✨ AI献立アシスタント</h3>
+    <p>※この機能は準備中です。</p>
+
+    <button class="ai-btn">🥗 栄養・カロリー目安を分析する</button>
+    <button class="ai-btn pink">💡 次の献立アイデアを提案してもらう</button>
+  </div>
+
+  <div class="back-btn">
+    <%= link_to "＜ 戻る", meals_path %>
+  </div>
+
+</div>

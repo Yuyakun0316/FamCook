@@ -1,0 +1,93 @@
+.meal-show-container {
+  width: 90%;
+  max-width: 550px;
+  margin: 20px auto;
+  padding-bottom: 80px;
+}
+
+.meal-show-img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  border: 2px solid #FFD5E2;
+}
+
+.meal-show-date {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #777;
+}
+
+.meal-show-title {
+  font-size: 22px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #444;
+}
+
+.meal-show-description h3 {
+  color: #FF6EA7;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid #FFD5E2;
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+}
+
+.meal-text {
+  color: #444;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.meal-show-actions {
+  text-align: right;
+  margin: 10px 0;
+}
+
+.meal-edit-btn {
+  color: gray;
+  margin-right: 10px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.meal-delete-btn {
+  color: red;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.meal-ai-box {
+  background: #FFF4F8;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 20px;
+  border: 2px solid #FFD5E2;
+  color: #FF6EA7;
+}
+
+.ai-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #FF6EA7;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ai-btn.pink {
+  background: #FF6EA7;
+}
+
+.back-btn a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: gray;
+  text-decoration: none;
+}
