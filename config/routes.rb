@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "homes#index"
-  resources :meals, only: [:index, :new, :create]
+  resources :meals, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 end

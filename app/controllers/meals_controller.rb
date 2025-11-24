@@ -2,7 +2,8 @@ class MealsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @meals = Meal.where(user: current_user).order(date: :desc)
+    @current_month = params[:month] ? Date.parse(params[:month]) : Date.current.beginning_of_month
+    @meals = Meal.where(user: current_user, date: @current_month..@current_month.end_of_month).order(date: :desc)
   end
 
   def new
