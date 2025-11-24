@@ -1,0 +1,34 @@
+<div class="meals-index-container">
+  <h2 class="meals-index-title">献立リスト</h2>
+
+  <!-- 月切り替え -->
+  <div class="meals-month-switch">
+    <%= link_to "< #{(@current_month - 1.month).strftime('%-m月')}", meals_path(month: (@current_month - 1.month)), class: "month-btn" %>
+    <span class="current-month"><%= @current_month.strftime('%Y年 %-m月') %></span>
+    <%= link_to "#{(@current_month + 1.month).strftime('%-m月')} >", meals_path(month: (@current_month + 1.month)), class: "month-btn" %>
+  </div>
+
+  <% @meals.each do |meal| %>
+    <div class="meal-card">
+      <div class="meal-card-image">
+        <% if meal.images.attached? %>
+          <%= image_tag meal.images.first, class: "meal-thumbnail" %>
+        <% else %>
+          <div class="meal-no-image">？</div>
+        <% end %>
+      </div>
+
+      <% jp_weekdays = %w[日 月 火 水 木 金 土] %>
+
+      <div class="meal-card-content">
+        <div class="meal-date">
+          <%= meal.date.strftime("%Y年 %-m月%-d日") %>
+          （<%= jp_weekdays[meal.date.wday] %>）
+        </div>
+        <div class="meal-title"><%= meal.title %></div>
+        <div class="meal-description"><%= truncate(meal.description, length: 50) %></div>
+        <%= link_to "詳細を見る >", meal_path(meal), class: "meal-detail-link" %>
+      </div>
+    </div>
+  <% end %>
+</div>
