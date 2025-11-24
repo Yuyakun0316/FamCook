@@ -1,0 +1,99 @@
+<!-- app/views/meals/edit.html.erb -->
+<div class="meal-form-container">
+  <h1 class="meal-form-title">✏️ 献立を編集</h1>
+
+  <% if @meal.errors.any? %>
+    <div class="error-messages">
+      <% @meal.errors.full_messages.each do |message| %>
+        <p>⚠️ <%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="meal-form-box">
+    <%= form_with model: @meal, local: true do |f| %>
+
+      <!-- 写真（既存画像の表示） -->
+      <!-- 📸 写真（既存 + 新規） -->
+      <div class="meal-field">
+        <label>📸 現在の写真</label>
+
+        <% if @meal.images.attached? %>
+          <div class="edit-image-preview">
+            <% @meal.images.each do |image| %>
+              <%= image_tag image.variant(resize_to_limit: [150, 150]), class: "edit-img" %>
+            <% end %>
+          </div>
+        <% else %>
+          <p>（画像なし）</p>
+        <% end %>
+
+        <label class="margin-top-small">🆕 新しい画像を追加（任意）</label>
+
+        <!-- 🔽 投稿画面と同じ画像プレビューエリア -->
+        <div id="preview-container" class="image-preview-area">
+          <div class="image-slot">+</div>
+          <div class="image-slot">+</div>
+          <div class="image-slot">+</div>
+        </div>
+
+        <%= f.file_field :images, multiple: true, accept: "image/*", id: "meal-image-upload", class: "meal-image-hidden" %>
+      </div>
+
+      <!-- 食事の時間 -->
+      <div class="meal-field">
+        <%= f.label :meal_type, "⏱️ 食事の時間" %>
+        <%= f.select :meal_type, [
+            ["朝食", "breakfast"], ["昼食", "lunch"],
+            ["夕食", "dinner"], ["間食/その他", "snack"]
+          ], {}, class: "meal-input" %>
+      </div>
+
+      <!-- 日付 -->
+      <div class="meal-field">
+        <%= f.label :date, "📅 日付" %>
+        <%= f.date_field :date, class: "meal-input" %>
+      </div>
+
+      <!-- 献立名 -->
+      <div class="meal-field">
+        <%= f.label :title, "🍽️ 献立名" %>
+        <%= f.text_field :title, class: "meal-input" %>
+      </div>
+
+      <!-- アイコン -->
+      <div class="meal-field">
+        <%= f.label :icon_type, "🍽️ 食事アイコン" %>
+        <%= f.select :icon_type, [
+            ["🍚 ごはん系", "rice"],
+            ["🍣 和食系", "japanese"],
+            ["🍝 洋食系", "western"],
+            ["🥟 中華系", "chinese"],
+            ["🐟 魚料理", "fish"],
+            ["🥗 健康・野菜", "healthy"],
+            ["🍔 子ども向け", "kids"],
+            ["🍰 デザート", "dessert"],
+            ["☕️ 飲み物", "drink"]
+          ], {}, class: "meal-input" %>
+      </div>
+
+      <!-- メモ -->
+      <div class="meal-field">
+        <%= f.label :description, "📝 メモ / 感想" %>
+        <%= f.text_area :description, class: "meal-textarea" %>
+      </div>
+
+      <!-- 更新ボタン -->
+      <div class="meal-submit-area">
+        <%= f.submit "💾 更新する", class: "meal-submit-button" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= javascript_import_module_tag "meal_image_preview" %>
+
+  <!-- 戻る -->
+  <div class="meal-back-button">
+    <%= link_to "＜ 戻る", meal_path(@meal), class: "meal-back-link" %>
+  </div>
+</div>
