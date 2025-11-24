@@ -22,8 +22,29 @@ class MealsController < ApplicationController
   end
 
   def show
-  @meal = Meal.find(params[:id])
-end
+    @meal = Meal.find(params[:id])
+  end
+
+  def edit
+    @meal = Meal.find(params[:id])
+  end
+
+  def update
+    @meal = Meal.find(params[:id])
+
+    # 画像未選択の場合、params から除外
+    if meal_params[:images].blank?
+      if @meal.update(meal_params.except(:images))
+        redirect_to @meal, notice: '献立を更新しました✨'
+      else
+        render :edit, status: :unprocessable_entity
+      end
+    elsif @meal.update(meal_params)
+      redirect_to @meal, notice: '献立を更新しました✨'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   private
 
