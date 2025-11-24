@@ -1,14 +1,10 @@
-/* 背景（かわいいピンクグラデーション） */
+/* 背景 */
 body {
   margin: 0;
   padding: 0;
   font-family: "Helvetica", sans-serif;
   background: linear-gradient(180deg, #FF7EA9, #FFBDD4);
   color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 /* コンテナ */
@@ -16,6 +12,7 @@ body {
   text-align: center;
   width: 90%;
   max-width: 400px;
+  margin: 40px auto;
 }
 
 /* ロゴ文字（手書き風） */
@@ -24,6 +21,7 @@ body {
   font-weight: bold;
   margin-bottom: 20px;
   font-family: "Comic Sans MS", cursive;
+  color: black;
 }
 
 /* 白背景のボックス */
@@ -38,13 +36,13 @@ body {
 .auth-input {
   width: 100%;
   padding: 12px;
-  margin: 10px 0;
+  margin: 12px 0;
   border: none;
   border-radius: 10px;
   background: #F8E8F0;
   color: #444;
   font-size: 14px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   display: block;
 }
 
