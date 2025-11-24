@@ -93,8 +93,15 @@ html, body {
   font-size: 12px;
   text-align: center;
   color: #888;
+  text-decoration: none;
 }
 
 .nav-item.active {
-  color: #ff6ea7;
+  color: #FF6EA7;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.nav-item.active:hover {
+  opacity: 0.8;
 }
