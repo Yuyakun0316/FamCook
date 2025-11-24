@@ -30,21 +30,19 @@ class MealsController < ApplicationController
   end
 
   def update
-  @meal = Meal.find(params[:id])
+    @meal = Meal.find(params[:id])
 
     # 画像未選択の場合、params から除外
     if meal_params[:images].blank?
       if @meal.update(meal_params.except(:images))
-        redirect_to @meal, notice: "献立を更新しました✨"
+        redirect_to @meal, notice: '献立を更新しました✨'
       else
         render :edit, status: :unprocessable_entity
       end
+    elsif @meal.update(meal_params)
+      redirect_to @meal, notice: '献立を更新しました✨'
     else
-      if @meal.update(meal_params)
-        redirect_to @meal, notice: "献立を更新しました✨"
-      else
-        render :edit, status: :unprocessable_entity
-      end
+      render :edit, status: :unprocessable_entity
     end
   end
 
