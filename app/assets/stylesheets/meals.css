@@ -66,8 +66,10 @@
 }
 
 .meal-image-hidden {
+  opacity: 0;
+  width: 0;
+  height: 0;
   position: absolute;
-  left: -9999px;
 }
 
 .image-slot.has-image .delete-btn {
