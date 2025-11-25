@@ -1,0 +1,67 @@
+<div class="settings-container">
+
+  <h1 class="settings-title">設定</h1>
+
+  <!-- 家族・アカウント設定 -->
+  <section class="settings-section">
+    <h2 class="section-title">👩‍👧‍👦 家族・アカウント設定</h2>
+
+    <div class="settings-row">
+      <label>家族グループID</label>
+      <div class="input-group">
+        <span class="settings-id">000000</span>
+        <button class="btn-copy">コピー</button>
+      </div>
+    </div>
+
+    <div class="settings-row border-top">
+      <label>メンバー管理</label>
+      <button class="btn-link">管理する ></button>
+    </div>
+
+    <div class="settings-row border-top">
+      <label>プロフィール編集</label>
+      <button class="btn-link">編集する ></button>
+    </div>
+  </section>
+
+  <!-- 通知・効率化設定 -->
+  <section class="settings-section">
+    <h2 class="section-title">🔔 通知・効率化設定</h2>
+
+    <!-- 投稿リマインダー -->
+    <div class="settings-row">
+      <label>投稿リマインダー</label>
+      <input type="checkbox">
+    </div>
+
+    <!-- 通知時間 -->
+    <div class="settings-row">
+      <label>通知時間</label>
+      <select>
+        <option>18:00</option>
+        <option>19:00（推奨）</option>
+        <option>20:00</option>
+      </select>
+    </div>
+
+    <!-- 新しい項目：家族メモの更新通知 -->
+    <div class="settings-row">
+      <label>家族メモの更新通知</label>
+      <input type="checkbox">
+    </div>
+  </section>
+
+  <hr class="settings-divider">
+
+  <!-- 🚪ログアウト（右寄せで自然な位置） -->
+  <div class="logout-area">
+    <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "logout-button" %>
+  </div>
+
+  <!-- 戻るボタン（中央揃え） -->
+  <div class="center">
+    <%= link_to "＜ 戻る", root_path, class: "btn-back" %>
+  </div>
+
+</div>

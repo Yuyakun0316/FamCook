@@ -1,0 +1,109 @@
+.settings-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.settings-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff6ea7;
+  margin-bottom: 20px;
+}
+
+.settings-section {
+  background: #fff;
+  padding: 15px;
+  border: 2px solid #ffbdd4;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* ラベルと操作部分 */
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  color: #333;
+}
+
+.border-top {
+  border-top: 1px solid #ffccd9;
+  padding-top: 10px;
+}
+
+.input-group {
+  display: flex;
+  gap: 5px;
+}
+
+.settings-id {
+  background: #ffe6ef;
+  border: 1px solid #ffbdd4;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.btn-copy {
+  background: #ff6ea7;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-copy:hover {
+  background: #ff5189;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #ff6ea7;
+  cursor: pointer;
+}
+
+.center {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-back {
+  color: #444;
+  text-decoration: none;
+}
+
+.settings-divider {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #ffdce8;
+}
+
+.logout-area {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.logout-button {
+  background: #ff6ea7;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.logout-button:hover {
+  background: #ff5189;
+}
