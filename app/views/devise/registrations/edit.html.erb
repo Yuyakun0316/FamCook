@@ -1,5 +1,5 @@
 <div class="auth-container">
-  <div class="auth-logo">👤 プロフィール編集</div>
+  <div class="setting-auth-logo">🛠 プロフィール編集</div>
 
   <div class="auth-box">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -23,8 +23,8 @@
       <%= f.submit "更新する", class: "auth-button" %>
     <% end %>
 
-    <div class="auth-sub">
-      <%= link_to "戻る", homes_index_path %>
+    <div class="setting-auth-sub">
+      <%= link_to "＜戻る", settings_path %>
     </div>
   </div>
 </div>
