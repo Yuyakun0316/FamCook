@@ -18,7 +18,7 @@
    全体背景＆スクロール制御
 =================== */
 html, body {
-  overflow: hidden; /* ← 背景が動かない */
+  overflow: hidden;
   background-attachment: fixed;
   background-size: cover;
 }
@@ -28,13 +28,13 @@ html, body {
 =================== */
 .scroll-area {
   position: absolute;
-  top: 50px;            /* ヘッダーの高さ */
-  bottom: 50px;         /* ナビの高さ */
+  top: 60px;
+  bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 400px;
-  overflow-y: auto;     /* ← スクロール可能 */
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF5F1;
   box-sizing: border-box;
@@ -50,16 +50,27 @@ html, body {
   transform: translateX(-50%);
   width: 100%;
   max-width: 400px;
-  height: 50px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
   background-color: white;
   border: 2px solid #ffd2e0;
-  border-radius: 20px 20px 0 0; /* ←上だけ丸める */
+  border-radius: 20px 20px 0 0; 
   z-index: 10;
   box-sizing: border-box;
+}
+
+.settings-icon {
+  font-size: 28px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.home-header a {
+  text-decoration: none;
 }
 
 .app-title {
@@ -87,6 +98,7 @@ html, body {
   border: 2px solid #ffd2e0;
   z-index: 10;
   box-sizing: border-box;
+  height: 60px;
 }
 
 .nav-item {
