@@ -16,12 +16,12 @@
 
     <div class="settings-row border-top">
       <label>メンバー管理</label>
-      <button class="btn-link">管理する ></button>
+      <%= link_to "管理する >", "#", class: "btn-link" %>
     </div>
 
     <div class="settings-row border-top">
       <label>プロフィール編集</label>
-      <button class="btn-link">編集する ></button>
+      <%= link_to "編集する >", edit_user_registration_path, class: "btn-link" %>
     </div>
   </section>
 
