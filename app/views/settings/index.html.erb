@@ -56,7 +56,7 @@
 
   <!-- 🚪ログアウト（右寄せで自然な位置） -->
   <div class="logout-area">
-    <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "logout-button" %>
+    <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？\nログインが必要になります。" }, class: "logout-button" %>
   </div>
 
   <!-- 戻るボタン（中央揃え） -->
