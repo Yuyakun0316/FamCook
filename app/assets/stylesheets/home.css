@@ -27,6 +27,25 @@
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
+.calendar-month-switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.calendar-month-switch .month-btn {
+  color: #FF6EA7;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.calendar-month-switch .current-month {
+  font-weight: bold;
+  font-size: 16px;
+}
+
 /* 📆 テーブル調整 */
 .calendar-table {
   width: 100%;
@@ -90,6 +109,7 @@
   margin: 20px auto;
   padding: 20px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  text-decoration: none;
 }
 
 /* ===================
