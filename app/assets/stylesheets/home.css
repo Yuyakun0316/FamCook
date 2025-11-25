@@ -27,6 +27,25 @@
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
+.calendar-month-switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.calendar-month-switch .month-btn {
+  color: #FF6EA7;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.calendar-month-switch .current-month {
+  font-weight: bold;
+  font-size: 16px;
+}
+
 /* 📆 テーブル調整 */
 .calendar-table {
   width: 100%;
@@ -55,6 +74,18 @@
   margin-bottom: 2px;
 }
 
+.calendar-table td.no-meals {
+  opacity: 0.4;
+}
+
+.calendar-table td.has-meals {
+  opacity: 1;
+}
+
+.calendar-table td.today {
+  opacity: 1 !important;
+}
+
 /* 今日の日付 */
 .calendar-table .today .calendar-date {
   background: #ff6ea7;
@@ -72,7 +103,7 @@
   font-size: 20px;
   margin-top: 4px;
   line-height: 1.1;
-  cursor: help;  /* hover できる感じを出す */
+  cursor: help;
 }
 
 /* ===================
@@ -90,6 +121,7 @@
   margin: 20px auto;
   padding: 20px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  text-decoration: none;
 }
 
 /* ===================
@@ -140,8 +172,8 @@
   }
 
   .bottom-nav {
-    width: 50%;         /* 450px → 60% に変更（例） */
-    max-width: 500px;   /* 岩谷幅を制限して崩れ防止 */
+    width: 50%;
+    max-width: 500px;
     left: 50%;
     transform: translateX(-50%);
   }

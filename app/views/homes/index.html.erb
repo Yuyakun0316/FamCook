@@ -2,8 +2,12 @@
 <div class="home-container">
   <!-- カレンダー -->
   <div class="calendar-card">
-    <h2>今月の献立記録（2025年11月）</h2>
-    <!-- 仮カレンダー（後でJSやgemで実装可能） -->
+    <h2><%= @current_month.strftime('%Y年 %-m月の献立記録') %></h2>
+      <div class="calendar-month-switch">
+        <%= link_to "< #{(@current_month - 1.month).strftime('%-m月')}", root_path(month: (@current_month - 1.month)), class: "month-btn" %>
+        <%= link_to "#{(@current_month + 1.month).strftime('%-m月')} >", root_path(month: (@current_month + 1.month)), class: "month-btn" %>
+      </div>
+
     <table class="calendar-table">
       <tr>
         <th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th>
@@ -12,15 +16,15 @@
       <% @calendar_dates.each_slice(7) do |week| %>
       <tr>
         <% week.each do |date| %>
-          <td class="<%= 'today' if date == Date.current %>">
+          <td class="<%= (date == Date.current ? 'today ' : '') + (@meals_by_date[date] ? 'has-meals' : 'no-meals') %>">
             <div class="calendar-date"><%= date.day %></div>
 
-              <% @meals_by_date[date]&.each do |meal| %>
-                <div class="meal-icon" title="<%= meal.title %>">
-                  <%= icon_for(meal.icon_type) %>
-                </div>
-              <% end %>
-            </td>
+            <% @meals_by_date[date]&.each do |meal| %>
+              <div class="meal-icon" title="<%= meal.title %>">
+                <%= icon_for(meal.icon_type) %>
+              </div>
+            <% end %>
+          </td>
           <% end %>
       </tr>
       <% end %>
