@@ -16,15 +16,15 @@
       <% @calendar_dates.each_slice(7) do |week| %>
       <tr>
         <% week.each do |date| %>
-          <td class="<%= 'today' if date == Date.current %>">
+          <td class="<%= (date == Date.current ? 'today ' : '') + (@meals_by_date[date] ? 'has-meals' : 'no-meals') %>">
             <div class="calendar-date"><%= date.day %></div>
 
-              <% @meals_by_date[date]&.each do |meal| %>
-                <div class="meal-icon" title="<%= meal.title %>">
-                  <%= icon_for(meal.icon_type) %>
-                </div>
-              <% end %>
-            </td>
+            <% @meals_by_date[date]&.each do |meal| %>
+              <div class="meal-icon" title="<%= meal.title %>">
+                <%= icon_for(meal.icon_type) %>
+              </div>
+            <% end %>
+          </td>
           <% end %>
       </tr>
       <% end %>

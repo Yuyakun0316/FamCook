@@ -74,6 +74,18 @@
   margin-bottom: 2px;
 }
 
+.calendar-table td.no-meals {
+  opacity: 0.4;
+}
+
+.calendar-table td.has-meals {
+  opacity: 1;
+}
+
+.calendar-table td.today {
+  opacity: 1 !important;
+}
+
 /* 今日の日付 */
 .calendar-table .today .calendar-date {
   background: #ff6ea7;
@@ -91,7 +103,7 @@
   font-size: 20px;
   margin-top: 4px;
   line-height: 1.1;
-  cursor: help;  /* hover できる感じを出す */
+  cursor: help;
 }
 
 /* ===================
@@ -160,8 +172,8 @@
   }
 
   .bottom-nav {
-    width: 50%;         /* 450px → 60% に変更（例） */
-    max-width: 500px;   /* 岩谷幅を制限して崩れ防止 */
+    width: 50%;
+    max-width: 500px;
     left: 50%;
     transform: translateX(-50%);
   }
