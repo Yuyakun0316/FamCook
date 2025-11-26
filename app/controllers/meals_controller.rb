@@ -23,7 +23,7 @@ class MealsController < ApplicationController
 
   def show
     @meal = Meal.find(params[:id])
-    @comment = Comment.new
+    @comments = @meal.comments.order(created_at: :desc)
   end
 
   def edit

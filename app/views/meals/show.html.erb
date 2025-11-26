@@ -66,7 +66,7 @@
     <h3>📝 みんなの評価とコメント</h3>
 
     <% if @meal.comments.any? %>
-      <% @meal.comments.each do |comment| %>
+      <% @comments.each do |comment| %>
         <div class="comment-card">
           <p class="comment-rating">⭐ <%= comment.rating %> / 5</p>
           <p class="comment-text"><%= comment.content.presence || "（コメントなし）" %></p>
