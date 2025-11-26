@@ -1,6 +1,6 @@
 <nav class="bottom-nav">
   <%= link_to "🏠<br>ホーム".html_safe, root_path, class: "nav-item #{ 'active' if current_page?(root_path) }" %>
   <%= link_to "📅<br>献立".html_safe, meals_path, class: "nav-item #{ 'active' if current_page?(meals_path) }" %>
-  <%= link_to "💬<br>メッセージ".html_safe, "#", class: "nav-item" %>
+  <%= link_to "🔍<br>絞り込み".html_safe, filter_meals_path, class: "nav-item #{ 'active' if current_page?(filter_meals_path) }" %>
   <%= link_to "🛍<br>買い物".html_safe, "#", class: "nav-item" %>
 </nav>
