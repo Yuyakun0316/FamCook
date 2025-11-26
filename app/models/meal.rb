@@ -16,7 +16,8 @@ class Meal < ApplicationRecord
   validates :icon_type, presence: true
 
   def average_rating
-    comments.average(:rating)&.round(1)  # 小数1桁丸め（例：4.3）
+    return 0 unless comments.any?
+    comments.average(:rating).round(1)
   end
 
   private

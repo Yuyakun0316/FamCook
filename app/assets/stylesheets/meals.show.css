@@ -20,12 +20,65 @@
   color: #777;
 }
 
-.meal-show-title {
+.meal-title h2 {
   font-size: 22px;
-  margin-top: 5px;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-weight: bold;
   color: #444;
+}
+
+/* 評価星 */
+.average-rating {
+  font-size: 22px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.average-rating .rating-number {
+  font-size: 14px;
+  color: #555;
+}
+
+.average-rating span {
+  font-size: 22px;
+  color: #ddd;
+}
+.average-rating .active-star {
+  color: #FFD700;
+}
+
+/* ★色なし（グレー） */
+.inactive-star {
+  color: #ddd;
+}
+
+/* ★色あり（ゴールド） */
+.active-star {
+  color: #FFD700;
+}
+
+/* ★半分だけ色をつける */
+.half-star {
+  position: relative;
+  display: inline-block;
+  color: #ddd; /* 薄い色 */
+}
+
+.half-star::before {
+  content: "★";
+  color: #FFD700;
+  position: absolute;
+  left: 0;
+  width: 50%; /* 半分だけ表示 */
+  overflow: hidden;
+}
+
+.no-rating {
+  font-size: 14px;
+  color: #aaa;
 }
 
 .meal-show-description h3 {

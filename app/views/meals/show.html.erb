@@ -16,7 +16,33 @@
   </div>
 
   <!-- 🍽 献立名 -->
-  <h2 class="meal-show-title"><%= @meal.title %></h2>
+  <div class="meal-title">
+    <h2><%= @meal.title %></h2>
+
+    <!-- ⭐ 評価 -->
+      <% if @average_rating > 0 %>
+        <% full_stars = @average_rating.floor %>
+        <% half_star = (@average_rating - full_stars) >= 0.5 %>
+
+        <div class="average-rating">
+          <% full_stars.times do %>
+            <span class="active-star">★</span>
+          <% end %>
+
+          <% if half_star %>
+            <span class="half-star">★</span>
+          <% end %>
+
+          <% (5 - full_stars - (half_star ? 1 : 0)).times do %>
+            <span class="inactive-star">★</span>
+          <% end %>
+
+          <span class="rating-number"><%= @average_rating %> / 5</span>
+        </div>
+      <% else %>
+        <div class="no-rating">まだ評価がありません</div>
+      <% end %>
+    </div>
 
   <!-- 📝 メモ -->
     <div class="meal-show-description">
