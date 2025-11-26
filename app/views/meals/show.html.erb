@@ -69,11 +69,19 @@
   <div class="meal-comment-list">
     <h3>📝 みんなの評価とコメント</h3>
 
-    <% if @meal.comments.any? %>
+    <% if @comments.present? %>
       <% @comments.each do |comment| %>
         <div class="comment-card">
-          <p class="comment-rating">⭐ <%= comment.rating %> / 5</p>
-          <p class="comment-text"><%= comment.content.presence || "（コメントなし）" %></p>
+          <p class="comment-rating">
+            <% 5.times do |i| %>
+              <% if i < comment.rating %>
+                <span class="star filled">★</span>
+              <% else %>
+                <span class="star">★</span>
+              <% end %>
+            <% end %>
+          </p>
+          <p class="comment-text"><%= comment.content.presence%></p>
           <p class="comment-user">
             👤 <%= comment.user&.name || "不明なユーザー" %> 
           </p>
