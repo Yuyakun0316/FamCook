@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
             presence: true,
             inclusion: {
               in: 1..5,
-              message: "は1〜5の範囲で入力してください"
+              message: 'は1〜5の範囲で入力してください'
             }
 
   # 💬 コメント（任意・最大300文字）
