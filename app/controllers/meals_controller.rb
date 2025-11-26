@@ -23,6 +23,8 @@ class MealsController < ApplicationController
 
   def show
     @meal = Meal.find(params[:id])
+    @comments = @meal.comments.order(created_at: :desc)
+    @average_rating = @meal.average_rating
   end
 
   def edit

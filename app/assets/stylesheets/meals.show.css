@@ -20,12 +20,65 @@
   color: #777;
 }
 
-.meal-show-title {
+.meal-title h2 {
   font-size: 22px;
-  margin-top: 5px;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-weight: bold;
   color: #444;
+}
+
+/* 評価星 */
+.average-rating {
+  font-size: 22px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.average-rating .rating-number {
+  font-size: 14px;
+  color: #555;
+}
+
+.average-rating span {
+  font-size: 22px;
+  color: #ddd;
+}
+.average-rating .active-star {
+  color: #FFD700;
+}
+
+/* ★色なし（グレー） */
+.inactive-star {
+  color: #ddd;
+}
+
+/* ★色あり（ゴールド） */
+.active-star {
+  color: #FFD700;
+}
+
+/* ★半分だけ色をつける */
+.half-star {
+  position: relative;
+  display: inline-block;
+  color: #ddd; /* 薄い色 */
+}
+
+.half-star::before {
+  content: "★";
+  color: #FFD700;
+  position: absolute;
+  left: 0;
+  width: 50%; /* 半分だけ表示 */
+  overflow: hidden;
+}
+
+.no-rating {
+  font-size: 14px;
+  color: #aaa;
 }
 
 .meal-show-description h3 {
@@ -70,6 +123,149 @@
   text-decoration: none;
 }
 
+/* ================================
+   🍣 詳細ページ：評価フォーム（meal-show.css）
+================================ */
+
+/* 評価フォーム全体 */
+.meal-show-rating-box {
+  background: #fffafc;
+  border: 2px solid #ffd2e0;
+  border-radius: 20px;
+  padding: 20px;
+  width: 90%;
+  max-width: 360px; /* ★中央に収まる最大幅 */
+  margin: 20px auto; /* ★中央配置 */
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+}
+
+/* タイトル調整 */
+.meal-rating-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff6ea7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+/* ==== ⭐ 星評価 UI ==== */
+.star-rating {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #ddd;
+  margin-bottom: 10px;
+}
+
+.star-rating .star.active {
+  color: #FFD700;
+}
+
+/* コメント欄 */
+.meal-rating-comment {
+  width: 100%;
+  min-height: 60px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+/* 送信ボタン */
+.meal-rating-submit {
+  width: 100%;
+  padding: 12px;
+  background: #ff6ea7;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
+
+.meal-rating-submit:hover {
+  background: #ff5189;
+}
+
+/* ======================
+   📝 コメント一覧
+====================== */
+.meal-comment-list {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.meal-comment-list h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff6ea7;
+  margin-bottom: 10px;
+}
+
+.comment-card {
+  background: #fff6f9;
+  border: 1px solid #ffd2e0;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* =====⭐ コメント一覧用 星表示 ===== */
+.comment-rating .star {
+  font-size: 20px;
+  color: #ddd;
+}
+
+.comment-rating .star.filled {
+  color: #FFD700;
+}
+
+.comment-text {
+  font-size: 14px;
+  color: #444;
+  margin: 5px 0;
+}
+
+.comment-header {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.no-comments {
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  padding: 10px;
+}
+
+.comment-delete-btn.inline {
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.comment-delete-btn.inline:hover {
+  color: #c00;
+}
+
+/* ======================
+   🔮 AI献立アシスタント
+====================== */
 .meal-ai-box {
   background: #FFF4F8;
   padding: 15px;
