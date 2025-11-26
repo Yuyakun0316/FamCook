@@ -70,6 +70,74 @@
   text-decoration: none;
 }
 
+/* ================================
+   🍣 詳細ページ：評価フォーム（meal-show.css）
+================================ */
+
+/* 評価フォーム全体 */
+.meal-show-rating-box {
+  background: #fffafc;
+  border: 2px solid #ffd2e0;
+  border-radius: 20px;
+  padding: 20px;
+  width: 90%;
+  max-width: 360px; /* ★中央に収まる最大幅 */
+  margin: 20px auto; /* ★中央配置 */
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+}
+
+/* タイトル調整 */
+.meal-rating-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff6ea7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+/* ⭐ 星評価 */
+.star-rating {
+  font-size: 26px;
+  cursor: pointer;
+  margin: 8px 0 16px;
+  color: yellow;
+}
+
+/* コメント欄 */
+.meal-rating-comment {
+  width: 100%;
+  min-height: 60px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+/* 送信ボタン */
+.meal-rating-submit {
+  width: 100%;
+  padding: 12px;
+  background: #ff6ea7;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
+
+.meal-rating-submit:hover {
+  background: #ff5189;
+}
+
 .meal-ai-box {
   background: #FFF4F8;
   padding: 15px;
