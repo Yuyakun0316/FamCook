@@ -44,8 +44,10 @@
     <%= form_with(model: [@meal, @meal.comments.build], local: true) do |f| %>
 
       <!-- ⭐ 星評価 -->
-      <div class="star-rating">
-        ★★★★☆
+      <div class="star-rating" id="star-rating">
+        <% 5.times do |i| %>
+          <span class="star" data-value="<%= i + 1 %>">★</span>
+        <% end %>
       </div>
 
       <!-- 🟡 評価（実際に送信する値） -->
@@ -58,6 +60,8 @@
       <%= f.submit "送信する", class: "meal-rating-submit" %>
     <% end %>
   </div>
+
+    <%= javascript_import_module_tag "meal_rating" %>
 
   <!-- ======================
       📊 評価・コメント一覧

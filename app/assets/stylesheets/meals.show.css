@@ -99,11 +99,18 @@
   margin-bottom: 12px;
 }
 
-/* ⭐ 星評価 */
+/* ==== ⭐ 星評価 UI ==== */
 .star-rating {
-  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  font-size: 30px;
   cursor: pointer;
-  margin: 8px 0 16px;
+  color: #ddd;
+  margin-bottom: 10px;
+}
+
+.star-rating .star.active {
   color: #FFD700;
 }
 
