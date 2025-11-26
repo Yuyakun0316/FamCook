@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root "homes#index"
 
   resources :meals do
+    collection do
+      get 'filter'
+    end
     resources :comments, only: [:create, :destroy]
   end
 

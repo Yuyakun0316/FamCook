@@ -48,6 +48,28 @@ class MealsController < ApplicationController
     end
   end
 
+  def filter
+    case params[:rating].to_i
+    when 5
+      @meals = Meal.joins(:comments)
+                  .group(:id)
+                  .having('ROUND(AVG(comments.rating)) = 5')
+    when 4
+      @meals = Meal.joins(:comments)
+                  .group(:id)
+                  .having('AVG(comments.rating) >= 4')
+    when 3
+      @meals = Meal.joins(:comments)
+                  .group(:id)
+                  .having('AVG(comments.rating) >= 3')
+    else
+      @meals = Meal.joins(:comments)
+                  .group(:id)
+                  .having('AVG(comments.rating) < 3')
+    end
+  end
+
+
   def destroy
     @meal = current_user.meals.find(params[:id])
     @meal.destroy
