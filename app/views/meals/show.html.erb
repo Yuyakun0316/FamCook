@@ -77,7 +77,7 @@
       </div>
 
       <!-- 🟡 評価（実際に送信する値） -->
-      <%= f.hidden_field :rating, value: 5, id: "hidden-rating-field" %>
+      <%= f.hidden_field :rating, id: "hidden-rating-field" %>
 
       <!-- 💬 コメント -->
       <%= f.text_area :content, placeholder: "コメントを入力（任意）", rows: 3, class: "meal-rating-comment" %>
@@ -98,6 +98,19 @@
     <% if @comments.present? %>
       <% @comments.each do |comment| %>
         <div class="comment-card">
+
+          <div class="comment-header">
+            👤 <%= comment.user&.name || "不明なユーザー" %> 
+
+            <%# 🌟 自分のコメントだけ削除ボタン表示 %>
+          <% if user_signed_in? && comment.user == current_user %>
+              <%= link_to "🗑️",
+                          meal_comment_path(@meal, comment),
+                          data: { turbo_method: :delete, turbo_confirm: "コメントを削除しますか？" },
+                          class: "comment-delete-btn inline" %>
+            <% end %>
+          </div>
+
           <p class="comment-rating">
             <% 5.times do |i| %>
               <% if i < comment.rating %>
@@ -107,10 +120,8 @@
               <% end %>
             <% end %>
           </p>
+
           <p class="comment-text"><%= comment.content.presence%></p>
-          <p class="comment-user">
-            👤 <%= comment.user&.name || "不明なユーザー" %> 
-          </p>
         </div>
       <% end %>
     <% else %>
