@@ -1,7 +1,7 @@
 class Meal < ApplicationRecord
   belongs_to :user
   has_many_attached :images
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   enum meal_type: { breakfast: 0, lunch: 1, dinner: 2, snack: 3 }, _default: :dinner
   enum icon_type: {
