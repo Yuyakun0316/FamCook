@@ -104,7 +104,7 @@
   font-size: 26px;
   cursor: pointer;
   margin: 8px 0 16px;
-  color: yellow;
+  color: #FFD700;
 }
 
 /* コメント欄 */
@@ -138,6 +138,57 @@
   background: #ff5189;
 }
 
+/* ======================
+   📝 コメント一覧
+====================== */
+.meal-comment-list {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.meal-comment-list h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff6ea7;
+  margin-bottom: 10px;
+}
+
+.comment-card {
+  background: #fff6f9;
+  border: 1px solid #ffd2e0;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-rating {
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.comment-text {
+  font-size: 14px;
+  color: #444;
+  margin: 5px 0;
+}
+
+.comment-user {
+  font-size: 12px;
+  text-align: right;
+  color: #888;
+}
+
+.no-comments {
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  padding: 10px;
+}
+
+/* ======================
+   🔮 AI献立アシスタント
+====================== */
 .meal-ai-box {
   background: #FFF4F8;
   padding: 15px;

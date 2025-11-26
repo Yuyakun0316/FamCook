@@ -33,19 +33,52 @@
         data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？\n削除したデータは戻せません。" },
         class: "meal-delete-btn" %>
 
+  <!-- ======================
+     ⭐ コメント / 評価入力フォーム
+  ====================== -->
   <div class="meal-show-rating-box">
-  <div class="meal-rating-title">
-    ⭐ 献立の評価とコメント ⭐
+    <div class="meal-rating-title">
+      ⭐ 献立の評価とコメント ⭐
+    </div>
+
+    <%= form_with(model: [@meal, @meal.comments.build], local: true) do |f| %>
+
+      <!-- ⭐ 星評価 -->
+      <div class="star-rating">
+        ★★★★☆
+      </div>
+
+      <!-- 🟡 評価（実際に送信する値） -->
+      <%= f.hidden_field :rating, value: 5, id: "hidden-rating-field" %>
+
+      <!-- 💬 コメント -->
+      <%= f.text_area :content, placeholder: "コメントを入力（任意）", rows: 3, class: "meal-rating-comment" %>
+
+      <!-- 🚀 投稿ボタン -->
+      <%= f.submit "送信する", class: "meal-rating-submit" %>
+    <% end %>
   </div>
 
-  <div class="star-rating">
-    ★★★★☆
+  <!-- ======================
+      📊 評価・コメント一覧
+  ====================== -->
+  <div class="meal-comment-list">
+    <h3>📝 みんなの評価とコメント</h3>
+
+    <% if @meal.comments.any? %>
+      <% @meal.comments.each do |comment| %>
+        <div class="comment-card">
+          <p class="comment-rating">⭐ <%= comment.rating %> / 5</p>
+          <p class="comment-text"><%= comment.content.presence || "（コメントなし）" %></p>
+          <p class="comment-user">
+            👤 <%= comment.user&.name || "不明なユーザー" %> 
+          </p>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="no-comments">まだ評価・コメントがありません</p>
+    <% end %>
   </div>
-
-  <textarea class="meal-rating-comment" placeholder="コメントを入力（任意）"></textarea>
-
-  <button class="meal-rating-submit">送信する（仮）</button>
-</div>
 
   <!-- 🔮 AI献立アシスタント（ビューのみ） -->
   <div class="meal-ai-box">
