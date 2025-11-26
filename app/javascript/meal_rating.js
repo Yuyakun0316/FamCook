@@ -1,7 +1,9 @@
 document.addEventListener("turbo:load", () => {
   const stars = document.querySelectorAll("#star-rating .star");
   const hiddenRatingField = document.getElementById("hidden-rating-field");
-  let selectedRating = hiddenRatingField.value || 0;
+
+  // ⭐ 新規投稿時は空なので必ず 0 からスタート
+  let selectedRating = hiddenRatingField.value ? Number(hiddenRatingField.value) : 0;
 
   const updateStars = (rating) => {
     stars.forEach((star, index) => {
@@ -13,16 +15,17 @@ document.addEventListener("turbo:load", () => {
 
   stars.forEach((star) => {
     star.addEventListener("click", () => {
-      selectedRating = star.getAttribute("data-value");
+      selectedRating = Number(star.dataset.value);
       hiddenRatingField.value = selectedRating;
       updateStars(selectedRating);
     });
 
-    // ホバーで一時的な視覚反応
+    // ホバー時
     star.addEventListener("mouseover", () => {
-      updateStars(star.getAttribute("data-value"));
+      updateStars(Number(star.dataset.value));
     });
 
+    // ホバー外れたら元に戻す
     star.addEventListener("mouseleave", () => {
       updateStars(selectedRating);
     });
