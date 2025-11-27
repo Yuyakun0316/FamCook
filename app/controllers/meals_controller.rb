@@ -51,24 +51,27 @@ class MealsController < ApplicationController
   def filter
     case params[:rating].to_i
     when 5
+      # ⭐5.0のみ
       @meals = Meal.joins(:comments)
                   .group(:id)
-                  .having('ROUND(AVG(comments.rating)) = 5')
+                  .having('ROUND(AVG(comments.rating), 1) = 5.0')
     when 4
+      # ⭐4.0〜4.9
       @meals = Meal.joins(:comments)
                   .group(:id)
-                  .having('AVG(comments.rating) >= 4')
+                  .having('AVG(comments.rating) >= 4 AND AVG(comments.rating) < 5')
     when 3
+      # ⭐3.0〜3.9
       @meals = Meal.joins(:comments)
                   .group(:id)
-                  .having('AVG(comments.rating) >= 3')
+                  .having('AVG(comments.rating) >= 3 AND AVG(comments.rating) < 4')
     else
+      # ⭐それ以下（3.0未満）
       @meals = Meal.joins(:comments)
                   .group(:id)
                   .having('AVG(comments.rating) < 3')
     end
   end
-
 
   def destroy
     @meal = current_user.meals.find(params[:id])
