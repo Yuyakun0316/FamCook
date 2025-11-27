@@ -10,11 +10,17 @@
     <%= link_to "⭐️未", filter_meals_path(rating: -1), class: "filter-btn #{params[:rating] == '-1' ? 'active' : ''}" %>
   </div>
 
-  <p class="result-count">結果：<%= @meals.length %> 件</p>
+  <% if params[:rating].present? %>
+    <p class="result-count">結果：<%= @meals.length %> 件</p>
+  <% end %>
 
   <hr>
 
-  <% if @meals.present? %>
+  <% if @notice_message.present? %>
+    <!-- 絞り込み未選択の時 -->
+    <p class="filter-notice"><%= @notice_message %></p>
+
+  <% elsif @meals.present? %>
     <% @meals.each do |meal| %>
       <div class="meal-card">
         <div class="meal-image">

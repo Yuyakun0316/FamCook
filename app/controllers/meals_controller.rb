@@ -49,6 +49,12 @@ class MealsController < ApplicationController
   end
 
   def filter
+    if params[:rating].blank?
+      @meals = []
+      @notice_message = "🔍 絞り込み条件を選択してください"
+      return
+    end
+    
     rating = params[:rating].to_i
 
     # left_joins で評価なしも含める & avg_rating を使いやすくする

@@ -55,6 +55,13 @@
   margin-bottom: 8px;
 }
 
+.filter-notice {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  margin: 15px 0;
+}
+
 /* 献立カード */
 .meal-card {
   display: flex;
