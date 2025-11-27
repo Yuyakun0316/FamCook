@@ -117,15 +117,54 @@
   margin-right: auto;
 }
 
+/* 1つのメモアイテム */
 .memo-item {
   background: #fff;
-  padding: 10px 15px;
+  padding: 12px 15px;
   border-radius: 12px;
   border: 2px solid #ffd2e0;
   box-shadow: 0 3px 6px rgba(0,0,0,0.08);
   margin-bottom: 12px;
-  text-align: left;
+  
+  /* 横並びレイアウト */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
   font-size: 14px;
+}
+
+/* 📍ピン・🗑削除ボタンのエリア */
+.memo-pin-area,
+.memo-delete-area {
+  display: flex;
+  align-items: center;
+}
+
+.memo-pin-btn,
+.memo-delete-btn {
+  font-size: 20px;
+  padding: 4px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+
+.memo-pin-btn:hover,
+.memo-delete-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+/* 🔒固定されている場合（ゴールド） */
+.memo-pin-btn.pinned {
+  color: #ffae00;
+}
+
+/* 📝 メモ内容 + タグ（中央） */
+.memo-content {
+  flex: 1;
+  text-align: left;
 }
 
 .memo-text {
@@ -134,33 +173,15 @@
 }
 
 .memo-tag {
-  font-size: 12px;
-  color: #ff6ea7;
   display: block;
+  font-size: 12px;
   margin-top: 3px;
+  color: #ff6ea7;
 }
 
+/* メモがない場合 */
 .no-memo {
   margin-top: 20px;
   color: #aaa;
   font-size: 14px;
-}
-
-.memo-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 8px;
-}
-
-.memo-delete-btn {
-  font-size: 18px;
-  text-decoration: none;
-  cursor: pointer;
-  padding: 4px;
-  transition: 0.2s;
-}
-
-.memo-delete-btn:hover {
-  opacity: 0.6;
 }

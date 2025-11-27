@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :memos, only: [:index, :create, :destroy]
+  resources :memos, only: [:index, :create, :destroy] do
+    patch :toggle_pin, on: :member
+  end
 
   get 'settings', to: 'settings#index'
 end

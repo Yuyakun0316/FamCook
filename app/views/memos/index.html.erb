@@ -22,11 +22,23 @@
     <div class="memo-list">
       <% @memos.each do |memo| %>
         <div class="memo-item">
-          <!-- メモ内容 -->
+          <!-- 📍 ピン（左） -->
+          <% if user_signed_in? && memo.user == current_user %>
+            <div class="memo-pin-area">
+              <%= link_to(
+                    memo.pinned? ? "📍" : "📌",
+                    toggle_pin_memo_path(memo),
+                    data: { turbo_method: :patch },
+                    class: "memo-pin-btn #{'pinned' if memo.pinned?}",
+                    title: memo.pinned? ? "ピン解除" : "ピン固定"
+                  ) %>
+            </div>
+          <% end %>
+
+          <!-- 💬 メモ内容＋タグ（中央） -->
+          <div class="memo-content">
           <p class="memo-text"><%= memo.content %></p>
 
-        <div class="memo-footer">
-          <!-- カテゴリー -->
           <span class="memo-tag">
             <% case memo.category %>
             <% when "shopping" %>
@@ -39,15 +51,18 @@
               📌 <%= memo.category %>
             <% end %>
           </span>
+        </div>
 
-          <!-- 自分のメモだけ削除可能 -->
-          <% if user_signed_in? && memo.user == current_user %>
+        <!-- 🗑 削除（右） -->
+        <% if user_signed_in? && memo.user == current_user %>
+          <div class="memo-delete-area">
             <%= link_to "🗑️",
                         memo_path(memo, category: params[:category]),
                         data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-                        class: "memo-delete-btn" %>
+                        class: "memo-delete-btn",
+                        title: "削除" %>
+           </div>
           <% end %>
-          </div>
         </div>
       <% end %>
     </div>

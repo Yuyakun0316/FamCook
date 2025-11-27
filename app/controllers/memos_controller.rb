@@ -5,11 +5,14 @@ class MemosController < ApplicationController
     @memo = Memo.new
 
     if params[:category].present?
-      # ☑ カテゴリが指定されている場合 → 該当メモのみ表示
-      @memos = current_user.memos.where(category: params[:category]).order(created_at: :desc)
+      # ☑ カテゴリ指定あり → 該当メモのみ表示（固定メモ優先）
+      @memos = current_user.memos
+                .where(category: params[:category])
+                .order(pinned: :desc, created_at: :desc)
     else
-      # 📌 カテゴリ指定がなければ全件表示
-      @memos = current_user.memos.order(created_at: :desc)
+      # 📌 カテゴリ指定なし → 全件表示（固定メモ優先）
+      @memos = current_user.memos
+                .order(pinned: :desc, created_at: :desc)
     end
   end
 
@@ -27,6 +30,13 @@ class MemosController < ApplicationController
     @memo = current_user.memos.find(params[:id])
     @memo.destroy
     redirect_to memos_path(category: params[:category]), notice: "メモを削除しました"
+  end
+
+  # ⭐️ ピン切り替えアクション
+  def toggle_pin
+    @memo = current_user.memos.find(params[:id])
+    @memo.update(pinned: !@memo.pinned)  # true ↔ false を切り替え
+    redirect_to memos_path(category: params[:category]), notice: "ピンを更新しました📌"
   end
 
   private
