@@ -145,3 +145,22 @@
   color: #aaa;
   font-size: 14px;
 }
+
+.memo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.memo-delete-btn {
+  font-size: 18px;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: 0.2s;
+}
+
+.memo-delete-btn:hover {
+  opacity: 0.6;
+}

@@ -22,7 +22,11 @@
     <div class="memo-list">
       <% @memos.each do |memo| %>
         <div class="memo-item">
+          <!-- メモ内容 -->
           <p class="memo-text"><%= memo.content %></p>
+
+        <div class="memo-footer">
+          <!-- カテゴリー -->
           <span class="memo-tag">
             <% case memo.category %>
             <% when "shopping" %>
@@ -35,6 +39,15 @@
               📌 <%= memo.category %>
             <% end %>
           </span>
+
+          <!-- 自分のメモだけ削除可能 -->
+          <% if user_signed_in? && memo.user == current_user %>
+            <%= link_to "🗑️",
+                        memo_path(memo, category: params[:category]),
+                        data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                        class: "memo-delete-btn" %>
+          <% end %>
+          </div>
         </div>
       <% end %>
     </div>
