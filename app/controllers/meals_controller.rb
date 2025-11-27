@@ -70,6 +70,8 @@ class MealsController < ApplicationController
     else
       @meals = base_scope # 全件表示
     end
+
+    @meals = @meals.order('avg_rating DESC')
   end
 
   def destroy
