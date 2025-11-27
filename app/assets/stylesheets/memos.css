@@ -155,6 +155,20 @@
   font-size: 14px;
 }
 
+/* 📌ピン固定されたメモ */
+.memo-item.pinned {
+  background: #fff8d6;
+  border: 2px solid #ffb84d;
+  box-shadow: 0 4px 8px rgba(255, 184, 77, 0.25);
+}
+
+/* 📍ピンアイコン（固定状態） */
+.memo-pin-btn.pinned {
+  color: #ff6b6b;
+  font-size: 22px;
+  transform: scale(1.1);
+}
+
 /* 📍ピン・🗑削除ボタンのエリア */
 .memo-pin-area,
 .memo-delete-area {

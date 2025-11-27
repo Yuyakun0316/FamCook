@@ -29,7 +29,7 @@
   <% if @memos.present? %>
     <div class="memo-list">
       <% @memos.each do |memo| %>
-        <div class="memo-item">
+        <div class="memo-item <%= 'pinned' if memo.pinned? %>">
           <!-- 📍 ピン（左） -->
           <% if user_signed_in? && memo.user == current_user %>
             <div class="memo-pin-area">
