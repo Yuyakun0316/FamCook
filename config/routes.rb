@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
+  resources :memos, only: [:index]
+
   get 'settings', to: 'settings#index'
 end
