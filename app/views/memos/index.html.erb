@@ -3,9 +3,17 @@
 
   <!-- ⭐カテゴリーボタン -->
   <div class="memo-buttons">
-    <%= link_to "🛒 買い物", memos_path(category: "shopping"), class: "memo-btn #{'active' if params[:category] == 'shopping'}", data: { category: "shopping" } %>
-    <%= link_to "💡 料理", memos_path(category: "idea"), class: "memo-btn #{'active' if params[:category] == 'idea'}", data: { category: "idea" } %>
-    <%= link_to "📒 メモ", memos_path(category: "note"), class: "memo-btn #{'active' if params[:category] == 'note'}", data: { category: "note" } %>
+    <%= link_to "🛒 買い物", memos_path(category: "shopping"), 
+        class: "memo-btn shopping #{'active' if params[:category] == 'shopping'}",
+        data: { category: "shopping" } %>
+
+    <%= link_to "💡 料理", memos_path(category: "idea"), 
+        class: "memo-btn idea #{'active' if params[:category] == 'idea'}",
+        data: { category: "idea" } %>
+
+    <%= link_to "📒 メモ", memos_path(category: "note"), 
+        class: "memo-btn note #{'active' if params[:category] == 'note'}",
+        data: { category: "note" } %>
   </div>
 
   <!-- ✏️ 入力フォーム -->
@@ -39,7 +47,7 @@
           <div class="memo-content">
           <p class="memo-text"><%= memo.content %></p>
 
-          <span class="memo-tag">
+          <span class="memo-tag <%= memo.category %>">
             <% case memo.category %>
             <% when "shopping" %>
               🛒 買い物

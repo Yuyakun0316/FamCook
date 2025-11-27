@@ -37,6 +37,27 @@
   text-decoration: none;
 }
 
+/* --- 🎨 カテゴリボタン色統一 --- */
+.memo-btn.shopping.active {
+  background-color: #a6e86d;
+  color: #fff;
+}
+
+.memo-btn.idea.active {
+  background-color: #f7a600;
+  color: #fff;
+}
+
+.memo-btn.note.active {
+  background-color: #ff6ea7;
+  color: #fff;
+}
+
+/* 通常時の hover も調整 */
+.memo-btn.shopping:hover { background-color: #b7f07c; }
+.memo-btn.idea:hover { background-color: #ffb55a; }
+.memo-btn.note:hover { background-color: #ff7eb8; }
+
 .memo-btn:hover {
   background-color: #ffb6d1;
   color: white;
@@ -176,7 +197,21 @@
   display: block;
   font-size: 12px;
   margin-top: 3px;
-  color: #ff6ea7;
+}
+
+/* 🛒 買い物 */
+.memo-tag.shopping {
+  color: #7ED957; /* 明るい緑 */
+}
+
+/* 💡 作りたい料理 */
+.memo-tag.idea {
+  color: #FFA500; /* オレンジ */
+}
+
+/* 📒 メモ */
+.memo-tag.note {
+  color: #FF6EA7; /* 既存ピンク */
 }
 
 /* メモがない場合 */
