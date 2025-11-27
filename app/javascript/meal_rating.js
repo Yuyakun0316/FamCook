@@ -2,6 +2,9 @@ document.addEventListener("turbo:load", () => {
   const stars = document.querySelectorAll("#star-rating .star");
   const hiddenRatingField = document.getElementById("hidden-rating-field");
 
+  // ⭐ 星評価UIがないページでは処理しない
+  if (!hiddenRatingField || stars.length === 0) return;
+
   // ⭐ 新規投稿時は空なので必ず 0 からスタート
   let selectedRating = hiddenRatingField.value ? Number(hiddenRatingField.value) : 0;
 

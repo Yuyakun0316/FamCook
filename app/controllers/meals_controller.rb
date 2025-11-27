@@ -48,6 +48,38 @@ class MealsController < ApplicationController
     end
   end
 
+  def filter
+    if params[:rating].blank?
+      @meals = []
+      @notice_message = '🔍 絞り込み条件を選択してください'
+      return
+    end
+
+    rating = params[:rating].to_i
+
+    # left_joins で評価なしも含める & avg_rating を使いやすくする
+    base_scope = Meal.left_joins(:comments)
+                     .select('meals.*, COALESCE(AVG(comments.rating), 0) AS avg_rating')
+                     .group('meals.id')
+
+    @meals = case rating
+             when 5
+               base_scope.having('ROUND(AVG(comments.rating), 1) = 5')
+             when 4
+               base_scope.having('AVG(comments.rating) >= 4 AND AVG(comments.rating) < 5')
+             when 3
+               base_scope.having('AVG(comments.rating) >= 3 AND AVG(comments.rating) < 4')
+             when 0
+               base_scope.having('AVG(comments.rating) < 3')
+             when -1
+               base_scope.having('COUNT(comments.id) = 0') # ⭐評価なしの料理だけ
+             else
+               base_scope # 全件表示
+             end
+
+    @meals = @meals.order('avg_rating DESC')
+  end
+
   def destroy
     @meal = current_user.meals.find(params[:id])
     @meal.destroy

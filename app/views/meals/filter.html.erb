@@ -1,0 +1,55 @@
+<div class="filter-container">
+  <h2>🔎 絞り込み</h2>
+
+  <!-- ⭐ 絞り込みボタン -->
+  <div class="filter-buttons">
+    <%= link_to "⭐️5", filter_meals_path(rating: 5), class: "filter-btn #{params[:rating] == '5' ? 'active' : ''}" %>
+    <%= link_to "⭐️4", filter_meals_path(rating: 4), class: "filter-btn #{params[:rating] == '4' ? 'active' : ''}" %>
+    <%= link_to "⭐️3", filter_meals_path(rating: 3), class: "filter-btn #{params[:rating] == '3' ? 'active' : ''}" %>
+    <%= link_to "⭐️2...", filter_meals_path(rating: 0), class: "filter-btn #{params[:rating] == '0' ? 'active' : ''}" %>
+    <%= link_to "⭐️未", filter_meals_path(rating: -1), class: "filter-btn #{params[:rating] == '-1' ? 'active' : ''}" %>
+  </div>
+
+  <% if params[:rating].present? %>
+    <p class="result-count">結果：<%= @meals.length %> 件</p>
+  <% end %>
+
+  <hr>
+
+  <% if @notice_message.present? %>
+    <!-- 絞り込み未選択の時 -->
+    <p class="filter-notice"><%= @notice_message %></p>
+
+  <% elsif @meals.present? %>
+    <% @meals.each do |meal| %>
+      <div class="meal-card">
+        <div class="meal-image">
+          <% if meal.images.attached? %>
+            <%= image_tag meal.images.first, alt: meal.title %>
+          <% else %>
+            <%= image_tag "no_image.png", alt: "No Image" %>
+          <% end %>
+        </div>
+
+        <div class="meal-info">
+          <h3><%= meal.title %></h3>
+          <p class="meal-rating">
+            <% average = meal.average_rating || 0 %>
+            <% full_stars = average.floor %>
+            <% half_star = (average - full_stars) >= 0.5 %>
+
+            <% full_stars.times { %><span>⭐</span><% } %>
+            <% if half_star %><span class="half-star">⭐</span><% end %>
+            <% (5 - full_stars - (half_star ? 1 : 0)).times { %><span>☆</span><% } %>
+
+            <span class="rating-number">(<%= average.round(1) %> / 5)</span>
+          </p>
+
+          <%= link_to "詳細を見る >", meal_path(meal), class: "detail-link" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="no-result">該当する献立がありません。</p>
+  <% end %>
+</div>
