@@ -1,0 +1,105 @@
+/* コンテナ */
+.filter-container {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  background: #fff9fb;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.filter-container h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff6ea7;
+   margin-bottom: 15px;
+   text-align: center;
+}
+
+/* ボタン */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.filter-btn {
+  background: #ffd6e9;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #d95f8f;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+  background: #ff79c6;
+  border: 2px solid #ff4fa1;
+  transform: scale(1.05);
+}
+
+.filter-btn:hover {
+  background: #ffb3d4;
+}
+
+.result-count {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* 献立カード */
+.meal-card {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.meal-image {
+  max-width: 100px;
+  max-height: 100px;
+}
+.meal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.meal-info {
+  margin: auto;
+}
+
+.meal-info h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #444;
+  font-weight: bold;
+}
+
+.meal-rating span {
+  color: #FFD700;
+}
+
+.detail-link {
+  font-size: 13px;
+  color: #ff6ea7;
+  margin-top: 5px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.no-result {
+  color: #888;
+  margin-top: 20px;
+}
