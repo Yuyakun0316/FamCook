@@ -1,9 +1,44 @@
 <div class="memo-container">
   <h2>📝 メモ</h2>
 
+  <!-- ⭐カテゴリーボタン -->
   <div class="memo-buttons">
-    <%= link_to "🛒 買い物", "#", class: "memo-btn" %>
-    <%= link_to "💡 作りたい料理", "#", class: "memo-btn" %>
-    <%= link_to "📒 メモ", "#", class: "memo-btn" %>
+    <%= link_to "🛒 買い物", memos_path(category: "shopping"), class: "memo-btn #{'active' if params[:category] == 'shopping'}", data: { category: "shopping" } %>
+    <%= link_to "💡 料理", memos_path(category: "idea"), class: "memo-btn #{'active' if params[:category] == 'idea'}", data: { category: "idea" } %>
+    <%= link_to "📒 メモ", memos_path(category: "note"), class: "memo-btn #{'active' if params[:category] == 'note'}", data: { category: "note" } %>
   </div>
+
+  <!-- ✏️ 入力フォーム -->
+  <div id="memo-form" class="memo-form hidden">
+    <%= form_with model: @memo, url: memos_path, local: true do |f| %>
+      <%= f.hidden_field :category, id: "memo-category" %>
+      <%= f.text_area :content, placeholder: "ここにメモを書いてください", rows: 4 %>
+      <%= f.submit "保存する", class: "memo-submit-btn" %>
+    <% end %>
+  </div>
+
+  <!-- 📌 メモ一覧表示 -->
+  <% if @memos.present? %>
+    <div class="memo-list">
+      <% @memos.each do |memo| %>
+        <div class="memo-item">
+          <p class="memo-text"><%= memo.content %></p>
+          <span class="memo-tag">
+            <% case memo.category %>
+            <% when "shopping" %>
+              🛒 買い物
+            <% when "idea" %>
+              💡 作りたい料理
+            <% when "note" %>
+              📒 メモ
+            <% else %>
+              📌 <%= memo.category %>
+            <% end %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="no-memo">まだメモがありません。</p>
+  <% end %>
 </div>

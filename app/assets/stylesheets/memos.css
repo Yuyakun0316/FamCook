@@ -1,29 +1,147 @@
+/* === 📝 メモページ全体 === */
 .memo-container {
   text-align: center;
-  padding: 20px;
+  padding: 25px 15px;
 }
 
+/* タイトル */
 .memo-container h2 {
   color: #ff6ea7;
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
+/* === 📌 メモカテゴリーボタン === */
 .memo-buttons {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin: 15px auto 25px;
+  width: 95%;
+  max-width: 450px;
 }
 
 .memo-btn {
-  padding: 10px 15px;
+  flex: 1; 
+  min-width: 90px; 
+  max-width: 120px;
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 25px;
   background-color: #ffe4f0;
-  border-radius: 20px;
-  font-size: 14px;
+  color: #444;
+  border: 1px solid #ffd1e3;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
   text-decoration: none;
-  color: #333;
-  transition: 0.3s;
 }
 
 .memo-btn:hover {
-  background-color: #ffb3d1;
+  background-color: #ffb6d1;
+  color: white;
+}
+
+/* 選択中 */
+.memo-btn.active {
+  background-color: #ff91b8;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(255,145,184,0.3);
+}
+
+/* === ✏️ 入力欄（フォーム） === */
+.memo-form {
+  margin: 10px auto 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  width: 85%;
+  max-width: 450px;
+}
+
+/* 入力テキストエリア */
+.memo-form textarea {
+  width: 100%;
+  height: 90px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  resize: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.memo-form textarea:focus {
+  outline: none;
+  border-color: #ff91b8;
+  box-shadow: 0 0 4px rgba(255,145,184,0.5);
+}
+
+/* 保存ボタン */
+.memo-form input[type="submit"] {
+  margin-top: 10px;
+  border: none;
+  background: #ff6ea7;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.memo-form input[type="submit"]:hover {
+  background: #ff4f92;
+}
+
+/* スマホ幅対応 */
+@media (max-width: 480px) {
+  .memo-buttons {
+    gap: 5px;
+  }
+  .memo-btn {
+    padding: 7px 8px;
+    font-size: 12px;
+    min-width: 80px;
+  }
+}
+
+/* --- 📌 メモ一覧 --- */
+.memo-list {
+  margin-top: 20px;
+  width: 85%;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.memo-item {
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: 2px solid #ffd2e0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.memo-text {
+  margin: 0;
+  color: #444;
+}
+
+.memo-tag {
+  font-size: 12px;
+  color: #ff6ea7;
+  display: block;
+  margin-top: 3px;
+}
+
+.no-memo {
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 14px;
 }
