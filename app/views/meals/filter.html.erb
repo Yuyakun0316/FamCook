@@ -42,7 +42,7 @@
             <% if half_star %><span class="half-star">⭐</span><% end %>
             <% (5 - full_stars - (half_star ? 1 : 0)).times { %><span>☆</span><% } %>
 
-            <span>(<%= average.round(1) %> / 5)</span>
+            <span class="rating-number">(<%= average.round(1) %> / 5)</span>
           </p>
 
           <%= link_to "詳細を見る >", meal_path(meal), class: "detail-link" %>
