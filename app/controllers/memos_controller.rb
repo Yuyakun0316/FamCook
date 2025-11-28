@@ -20,7 +20,7 @@ class MemosController < ApplicationController
     @memo = current_user.memos.build(memo_params)
 
     @memo.category = "note" if @memo.category.blank?
-    
+
     if @memo.save
       redirect_to memos_path, notice: 'メモを保存しました✨'
     else
@@ -40,7 +40,14 @@ class MemosController < ApplicationController
   def toggle_pin
     @memo = current_user.memos.find(params[:id])
     @memo.update(pinned: !@memo.pinned)
-    redirect_to memos_path(category: @memo.category), notice: 'ピンを更新しました📌'
+
+    respond_to do |format|
+      # 🚀 非同期 (Fetch API / JSON)
+      format.json { render json: { success: true, pinned: @memo.pinned } }
+
+      # 🔁 もし通常のHTMLアクセスの場合（保険として）
+      format.html { redirect_to memos_path(category: params[:category]), notice: 'ピンを更新しました📌' }
+    end
   end
 
   private
