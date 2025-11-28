@@ -19,7 +19,7 @@
   <!-- ✏️ 入力フォーム -->
   <div id="memo-form" class="memo-form hidden">
     <%= form_with model: @memo, url: memos_path, local: true do |f| %>
-      <%= f.hidden_field :category, id: "memo-category" %>
+      <%= f.hidden_field :category, value: params[:category].presence || "note" %>
       <%= f.text_area :content, placeholder: "ここにメモを書いてください", rows: 4 %>
       <%= f.submit "保存する", class: "memo-submit-btn" %>
     <% end %>

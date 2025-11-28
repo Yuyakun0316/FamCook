@@ -31,15 +31,16 @@ class MemosController < ApplicationController
 
   def destroy
     @memo = current_user.memos.find(params[:id])
+    category = @memo.category 
     @memo.destroy
-    redirect_to memos_path(category: params[:category]), notice: 'メモを削除しました'
+    redirect_to memos_path(category: category), notice: 'メモを削除しました'
   end
 
   # ⭐️ ピン切り替えアクション
   def toggle_pin
     @memo = current_user.memos.find(params[:id])
-    @memo.update(pinned: !@memo.pinned) # true ↔ false を切り替え
-    redirect_to memos_path(category: params[:category]), notice: 'ピンを更新しました📌'
+    @memo.update(pinned: !@memo.pinned)
+    redirect_to memos_path(category: @memo.category), notice: 'ピンを更新しました📌'
   end
 
   private
