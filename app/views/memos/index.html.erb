@@ -33,10 +33,10 @@
           <!-- 📍 ピン（左） -->
           <% if user_signed_in? && memo.user == current_user %>
             <div class="memo-pin-area">
-              <%= link_to(
+              <%= button_to(
                     memo.pinned? ? "📍" : "📌",
                     toggle_pin_memo_path(memo, category: params[:category]),
-                    data: { turbo_method: :patch },
+                    method: :patch,
                     class: "memo-pin-btn #{'pinned' if memo.pinned?}",
                     title: memo.pinned? ? "ピン解除" : "ピン固定"
                   ) %>
@@ -64,9 +64,10 @@
         <!-- 🗑 削除（右） -->
         <% if user_signed_in? && memo.user == current_user %>
           <div class="memo-delete-area">
-            <%= link_to "🗑️",
+            <%= button_to "🗑️",
                         memo_path(memo, category: params[:category]),
-                        data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                        method: :delete,
+                        data: { confirm: "本当に削除しますか？" },
                         class: "memo-delete-btn",
                         title: "削除" %>
            </div>
