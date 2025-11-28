@@ -64,12 +64,14 @@
         <!-- 🗑 削除（右） -->
         <% if user_signed_in? && memo.user == current_user %>
           <div class="memo-delete-area">
-            <%= button_to "🗑️",
-                        memo_path(memo, category: params[:category]),
-                        method: :delete,
-                        data: { confirm: "本当に削除しますか？" },
-                        class: "memo-delete-btn",
-                        title: "削除" %>
+            <button
+              type="button"
+              class="memo-delete-btn"
+              data-memo-id="<%= memo.id %>"
+              data-category="<%= params[:category] %>"
+              title="削除">
+              🗑️
+            </button>
            </div>
           <% end %>
         </div>
