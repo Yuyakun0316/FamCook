@@ -104,10 +104,12 @@
 
             <%# 🌟 自分のコメントだけ削除ボタン表示 %>
           <% if user_signed_in? && comment.user == current_user %>
-              <%= link_to "🗑️",
+              <%= button_to "🗑️",
                           meal_comment_path(@meal, comment),
-                          data: { turbo_method: :delete, turbo_confirm: "コメントを削除しますか？" },
-                          class: "comment-delete-btn inline" %>
+                        method: :delete,
+                        data: { confirm: "コメントを削除しますか？" },
+                        class: "comment-delete-btn inline",
+                        form: { class: "delete-comment-form" } %>
             <% end %>
           </div>
 
