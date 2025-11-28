@@ -18,6 +18,9 @@ class MemosController < ApplicationController
 
   def create
     @memo = current_user.memos.build(memo_params)
+
+    @memo.category = "note" if @memo.category.blank?
+    
     if @memo.save
       redirect_to memos_path, notice: 'メモを保存しました✨'
     else
