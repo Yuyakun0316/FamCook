@@ -33,13 +33,13 @@
           <!-- 📍 ピン（左） -->
           <% if user_signed_in? && memo.user == current_user %>
             <div class="memo-pin-area">
-              <%= button_to(
-                    memo.pinned? ? "📍" : "📌",
-                    toggle_pin_memo_path(memo, category: params[:category]),
-                    method: :patch,
-                    class: "memo-pin-btn #{'pinned' if memo.pinned?}",
-                    title: memo.pinned? ? "ピン解除" : "ピン固定"
-                  ) %>
+              <button
+                class="memo-pin-btn <%= 'pinned' if memo.pinned? %>"
+                data-memo-id="<%= memo.id %>"
+                data-category="<%= params[:category] %>"
+                title="<%= memo.pinned? ? 'ピン解除' : 'ピン固定' %>">
+                <%= memo.pinned? ? "📍" : "📌" %>
+              </button>
             </div>
           <% end %>
 
