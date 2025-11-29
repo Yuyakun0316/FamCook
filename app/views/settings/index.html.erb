@@ -9,10 +9,11 @@
     <div class="settings-row">
       <label>家族グループID</label>
       <div class="input-group">
-        <span class="settings-id">000000</span>
-        <button class="btn-copy">コピー</button>
+        <input type="text" value="<%= current_user.family.code %>" id="family-code-field" class="settings-id-field" readonly>
+        <button onclick="copyFamilyCode()" class="btn-copy">コピー</button>
       </div>
     </div>
+    <p class="settings-hint">※このコードを使用して家族に参加できます</p>
 
     <div class="settings-row border-top">
       <label>メンバー管理</label>
@@ -24,6 +25,16 @@
       <%= link_to "編集する >", edit_user_registration_path, class: "btn-link" %>
     </div>
   </section>
+
+  <script>
+    function copyFamilyCode() {
+      const field = document.getElementById("family-code-field");
+      field.select();
+      field.setSelectionRange(0, 999); // iOS対応
+      document.execCommand("copy");
+      alert("📋 家族グループIDをコピーしました！");
+    }
+  </script>
 
   <!-- 通知・効率化設定 -->
   <section class="settings-section">
