@@ -1,0 +1,21 @@
+<div class="comment-card">
+  <div class="comment-header">
+    👤 <%= comment.user&.name || "不明なユーザー" %>
+
+    <%# 自分のコメントだけ削除ボタン表示 %>
+    <% if user_signed_in? && comment.user == current_user %>
+      <%= button_to "🗑️",
+          meal_comment_path(comment.meal, comment),
+          method: :delete,
+          class: "comment-delete-btn inline" %>
+    <% end %>
+  </div>
+
+  <p class="comment-rating">
+    <% 5.times do |i| %>
+      <span class="star <%= "filled" if i < comment.rating %>">★</span>
+    <% end %>
+  </p>
+
+  <p class="comment-text"><%= comment.content.presence %></p>
+</div>

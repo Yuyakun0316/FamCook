@@ -67,7 +67,7 @@
       ⭐ 献立の評価とコメント ⭐
     </div>
 
-    <%= form_with(model: [@meal, @meal.comments.build], local: true) do |f| %>
+    <%= form_with(model: [@meal, @meal.comments.build], data: { turbo: false }) do |f| %>
 
       <!-- ⭐ 星評価 -->
       <div class="star-rating" id="star-rating">
@@ -97,34 +97,7 @@
 
     <% if @comments.present? %>
       <% @comments.each do |comment| %>
-        <div class="comment-card">
-
-          <div class="comment-header">
-            👤 <%= comment.user&.name || "不明なユーザー" %> 
-
-            <%# 🌟 自分のコメントだけ削除ボタン表示 %>
-          <% if user_signed_in? && comment.user == current_user %>
-              <%= button_to "🗑️",
-                          meal_comment_path(@meal, comment),
-                        method: :delete,
-                        data: { confirm: "コメントを削除しますか？" },
-                        class: "comment-delete-btn inline",
-                        form: { class: "delete-comment-form" } %>
-            <% end %>
-          </div>
-
-          <p class="comment-rating">
-            <% 5.times do |i| %>
-              <% if i < comment.rating %>
-                <span class="star filled">★</span>
-              <% else %>
-                <span class="star">★</span>
-              <% end %>
-            <% end %>
-          </p>
-
-          <p class="comment-text"><%= comment.content.presence%></p>
-        </div>
+        <%= render "comments/comment", comment: comment %>
       <% end %>
     <% else %>
       <p class="no-comments">まだ評価・コメントがありません</p>
