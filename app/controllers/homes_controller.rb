@@ -8,7 +8,10 @@ class HomesController < ApplicationController
     end_date = @current_month.end_of_month
     @calendar_dates = (start_date..end_date).to_a
 
-    # 🍚 指定月の献立データ
-    @meals_by_date = Meal.where(user: current_user, date: start_date..end_date).group_by(&:date)
+    # 🍚 指定月の献立データ（← family単位に変更！）
+    @meals_by_date = Meal.where(
+      family_id: current_user.family_id,
+      date: start_date..end_date
+    ).group_by(&:date)
   end
 end

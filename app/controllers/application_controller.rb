@@ -10,7 +10,10 @@ class ApplicationController < ActionController::Base
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    # 新規登録時に :family_code を許可
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :family_code])
+
+    # アカウント更新時（プロフィール編集）は :name のみ許可（必要に応じて変更可）
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 

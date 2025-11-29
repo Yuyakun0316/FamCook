@@ -1,5 +1,6 @@
 class Meal < ApplicationRecord
   belongs_to :user
+  belongs_to :family
   has_many_attached :images
   has_many :comments, dependent: :destroy
 
