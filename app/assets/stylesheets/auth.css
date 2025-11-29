@@ -84,6 +84,19 @@ body {
   text-decoration: underline;
 }
 
+/* 家族ID 入力欄（注意書き付き） */
+.family-input-container {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.family-input-container .family-hint {
+  font-size: 11px;
+  color: #666;
+  margin-top: -5px;
+  margin-left: 4px;
+}
+
 /* エラーメッセージ */
 .error-messages {
   background: #ffe4e4;

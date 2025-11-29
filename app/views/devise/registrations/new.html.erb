@@ -1,27 +1,42 @@
 <div class="auth-container">
   <div class="auth-logo">🎀 FamCook 登録</div>
 
-<% if resource.errors.any? %>
-  <div class="error-messages">
-    <% if resource.errors[:name].present? %>
-      <% resource.errors.full_messages_for(:name).each do |msg| %>
+  <% if resource.errors.any? %>
+    <div class="error-messages">
+      <% if resource.errors[:name].present? %>
+        <% resource.errors.full_messages_for(:name).each do |msg| %>
+          <p>⚠️ <%= msg %></p>
+        <% end %>
+      <% end %>
+
+      <% resource.errors.full_messages.reject { |m| m.include?("お名前") }.each do |msg| %>
         <p>⚠️ <%= msg %></p>
       <% end %>
-    <% end %>
-
-    <% resource.errors.full_messages.reject { |m| m.include?("お名前") }.each do |msg| %>
-      <p>⚠️ <%= msg %></p>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
 
   <div class="auth-box">
     <%= form_with scope: :user, url: user_registration_path, local: true do |f| %>
+
+      <!-- お名前 -->
       <%= f.text_field :name, placeholder: "お名前", class: "auth-input" %>
+
+      <!-- メール -->
       <%= f.email_field :email, placeholder: "メールアドレス", class: "auth-input" %>
+
+      <!-- パスワード -->
       <%= f.password_field :password, placeholder: "パスワード（6文字以上）", class: "auth-input" %>
+
+      <!-- パスワード確認 -->
       <%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: "auth-input" %>
 
+      <!-- 🔥 家族ID入力欄（追加） -->
+      <div class="family-input-container">
+        <%= f.text_field :family_code, placeholder: "家族ID（招待コード）※初めての方は空欄OK", class: "auth-input family-input" %>
+        <p class="family-hint">例：FAM2025 など</p>
+      </div>
+
+      <!-- 登録ボタン -->
       <%= f.submit "登録する", class: "auth-button" %>
     <% end %>
 
