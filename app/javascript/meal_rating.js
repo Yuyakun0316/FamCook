@@ -4,8 +4,12 @@
     const hiddenRatingField = document.getElementById("hidden-rating-field");
     const form = document.querySelector("form[action*='comments']");
 
-    // ⭐ 星評価UIが存在しないページでは処理しない
+    // ❗ 該当ページのみ処理
     if (!hiddenRatingField || stars.length === 0 || !form) return;
+
+    // 🔥 ⭐ここでイベントの多重登録防止！
+    if (form.dataset.bound === "true") return;
+    form.dataset.bound = "true";
 
     let selectedRating = Number(hiddenRatingField.value) || 0;
 
@@ -15,10 +19,10 @@
       });
     };
 
-    // ページ読み込み時も反映
+    // 初期状態反映
     updateStars(selectedRating);
 
-    // ⭐ 星クリック
+    // ⭐ 星クリック・ホバー処理
     stars.forEach((star) => {
       star.addEventListener("click", () => {
         selectedRating = Number(star.dataset.value);
@@ -37,6 +41,7 @@
 
     // 🚀 Ajax送信
     form.addEventListener("submit", (event) => {
+      // ⭐ 未選択チェック
       if (selectedRating === 0) {
         alert("⭐ 評価を選択してください！");
         return;
@@ -61,20 +66,20 @@
           if (data.success) {
             console.log("コメントを投稿しました");
 
-            // 🔁 リセット
+            // 🔁 入力リセット
             form.reset();
             selectedRating = 0;
             hiddenRatingField.value = 0;
             updateStars(0);
 
-            // 🆕 最新コメントをトップに追加
+            // 🆕 最新コメントを最上部に挿入
             const commentList = document.querySelector(".meal-comment-list");
             if (commentList && data.comment_html) {
-              const header = commentList.querySelector("h3");
-              if (header) {
-                header.insertAdjacentHTML("afterend", data.comment_html);
+              const firstComment = commentList.querySelector(".comment-card");
+              if (firstComment) {
+                firstComment.insertAdjacentHTML("beforebegin", data.comment_html);
               } else {
-                commentList.insertAdjacentHTML("afterbegin", data.comment_html);
+                commentList.insertAdjacentHTML("beforeend", data.comment_html);
               }
             }
           } else {
