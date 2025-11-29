@@ -37,7 +37,7 @@
 
 .border-top {
   border-top: 1px solid #ffccd9;
-  padding-top: 10px;
+  padding: 10px 0;
 }
 
 .input-group {
@@ -86,7 +86,7 @@
 .settings-hint {
   font-size: 12px;
   color: #666;
-  margin-top: 4px;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -97,6 +97,45 @@
   cursor: pointer;
   font-size: 15px;
   text-decoration: none;
+}
+
+/* 家族メンバー一覧 */
+.family-member-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.member-item {
+  background: #ffe6ef;
+  padding: 10px 12px;
+  margin: 6px 0;
+  border-radius: 8px;
+  border: 1px solid #ffbdd4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.member-item.current-user {
+  background: #ffdbe8; /* 自分の名前だけ少し濃く */
+  font-weight: bold;
+}
+
+.member-badge {
+  background: #ff6ea7;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin-left: 8px;
+  white-space: nowrap;
 }
 
 .center {
