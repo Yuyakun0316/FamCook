@@ -4,10 +4,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # 🔍 家族IDが入力されている場合
     if resource.family_code.present?
-      family = Family.find_by('LOWER(code) = ?', resource.family_code.downcase)
-      family ||= Family.create!(code: resource.family_code)
+      family = Family.find_by(code: resource.family_code.strip)  # 大文字小文字を区別したくない場合は .downcase とDB側も揃える
+      unless family
+        resource.errors.add(:family_code, "が正しくありません")
+        return render :new, status: :unprocessable_entity
+      end
     else
-      # 🔰 空欄の場合 → 新規作成
       family = Family.create!(code: SecureRandom.hex(4))
     end
 
