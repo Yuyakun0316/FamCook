@@ -6,9 +6,9 @@ class MealsController < ApplicationController
   def index
     @current_month = params[:month] ? Date.parse(params[:month]) : Date.current.beginning_of_month
     @meals = Meal.where(
-    family_id: current_user.family_id,
-    date: @current_month..@current_month.end_of_month
-  ).order(date: :desc)
+      family_id: current_user.family_id,
+      date: @current_month..@current_month.end_of_month
+    ).order(date: :desc)
   end
 
   def new
@@ -93,9 +93,9 @@ class MealsController < ApplicationController
   end
 
   def check_family
-    redirect_to meals_path, alert: "アクセス権限がありません。" if @meal.family_id != current_user.family_id
+    redirect_to meals_path, alert: 'アクセス権限がありません。' if @meal.family_id != current_user.family_id
   end
-  
+
   def meal_params
     params.require(:meal).permit(:title, :description, :date, :meal_type, :icon_type, images: [])
   end

@@ -4,9 +4,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # 🔍 家族IDが入力されている場合
     if resource.family_code.present?
-      family = Family.find_by(code: resource.family_code.strip)  # 大文字小文字を区別したくない場合は .downcase とDB側も揃える
+      family = Family.find_by(code: resource.family_code.strip) # 大文字小文字を区別したくない場合は .downcase とDB側も揃える
       unless family
-        resource.errors.add(:family_code, "が正しくありません")
+        resource.errors.add(:family_code, 'が正しくありません')
         return render :new, status: :unprocessable_entity
       end
     else

@@ -11,15 +11,15 @@ class MemosController < ApplicationController
                  .order(pinned: :desc, created_at: :desc)
 
     # 📌 カテゴリ指定があれば絞り込み
-    if params[:category].present?
-      @memos = @memos.where(category: params[:category])
-    end
+    return unless params[:category].present?
+
+    @memos = @memos.where(category: params[:category])
   end
 
   def create
     @memo = current_user.memos.build(memo_params)
     @memo.family_id = current_user.family_id
-    @memo.category = "note" if @memo.category.blank?
+    @memo.category = 'note' if @memo.category.blank?
 
     if @memo.save
       redirect_to memos_path, notice: 'メモを保存しました✨'
@@ -30,7 +30,7 @@ class MemosController < ApplicationController
     end
   end
 
-    def destroy
+  def destroy
     @memo.destroy
 
     respond_to do |format|
@@ -55,7 +55,7 @@ class MemosController < ApplicationController
   end
 
   def check_family
-    redirect_to memos_path, alert: "アクセス権限がありません。" if @memo.family_id != current_user.family_id
+    redirect_to memos_path, alert: 'アクセス権限がありません。' if @memo.family_id != current_user.family_id
   end
 
   def memo_params

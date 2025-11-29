@@ -8,18 +8,18 @@ class CommentsController < ApplicationController
     @comment = @meal.comments.new(comment_params)
     @comment.user = current_user
 
-  respond_to do |format|
-    if @comment.save
-       @comments = @meal.comments.includes(:user).order(created_at: :desc)
+    respond_to do |format|
+      if @comment.save
+        @comments = @meal.comments.includes(:user).order(created_at: :desc)
         format.html { redirect_to meal_path(@meal), notice: '評価とコメントを投稿しました！' }
-        
+
         format.json do
           render json: {
             success: true,
             comment: @comment,
             average_rating: @meal.average_rating,
             comment_html: render_to_string(
-              partial: "comments/comment",
+              partial: 'comments/comment',
               locals: { comment: @comment },
               formats: [:html]
             )
