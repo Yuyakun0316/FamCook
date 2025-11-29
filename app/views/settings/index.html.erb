@@ -17,8 +17,27 @@
 
     <div class="settings-row border-top">
       <label>メンバー管理</label>
-      <%= link_to "管理する >", "#", class: "btn-link" %>
+      <%= link_to "管理する >", settings_path(anchor: "family-members"), class: "btn-link" %>
     </div>
+
+    <section class="settings-section">
+      <h2 class="section-title">👩‍👧‍👦 家族メンバー一覧</h2>
+
+      <% if @users.present? %>
+        <ul class="family-member-list">
+          <% @users.each do |member| %>
+            <li class="member-item <%= 'current-user' if member == current_user %>">
+              👤 <%= member.name %>
+              <% if member == current_user %>
+                <span class="member-badge">あなた</span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>まだ他のメンバーはいません ✨</p>
+      <% end %>
+    </section>
 
     <div class="settings-row border-top">
       <label>プロフィール編集</label>
@@ -35,6 +54,8 @@
       alert("📋 家族グループIDをコピーしました！");
     }
   </script>
+
+  
 
   <!-- 通知・効率化設定 -->
   <section class="settings-section">
