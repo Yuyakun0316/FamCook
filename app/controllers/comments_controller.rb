@@ -8,12 +8,37 @@ class CommentsController < ApplicationController
     @comment = @meal.comments.new(comment_params)
     @comment.user = current_user
 
+  respond_to do |format|
     if @comment.save
-      redirect_to meal_path(@meal), notice: '評価とコメントを投稿しました！'
-    else
-      @comments = @meal.comments.includes(:user)
-      @average_rating = @meal.average_rating
-      render 'meals/show', status: :unprocessable_entity
+       @comments = @meal.comments.includes(:user).order(created_at: :desc)
+        format.html { redirect_to meal_path(@meal), notice: '評価とコメントを投稿しました！' }
+        
+        format.json do
+          render json: {
+            success: true,
+            comment: @comment,
+            average_rating: @meal.average_rating,
+            comment_html: render_to_string(
+              partial: "comments/comment",
+              locals: { comment: @comment },
+              formats: [:html]
+            )
+          }, status: :created
+        end
+      else
+        format.html do
+          @comments = @meal.comments.includes(:user).order(created_at: :desc)
+          @average_rating = @meal.average_rating
+          render 'meals/show', status: :unprocessable_entity
+        end
+
+        format.json do
+          render json: {
+            success: false,
+            errors: @comment.errors.full_messages
+          }, status: :unprocessable_entity
+        end
+      end
     end
   end
 
