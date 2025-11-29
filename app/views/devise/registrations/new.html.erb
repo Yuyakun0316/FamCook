@@ -16,7 +16,7 @@
   <% end %>
 
   <div class="auth-box">
-    <%= form_with scope: :user, url: user_registration_path, local: true do |f| %>
+    <%= form_with scope: :user, url: user_registration_path, local: true, data: { turbo: false } do |f| %>
 
       <!-- お名前 -->
       <%= f.text_field :name, placeholder: "お名前", class: "auth-input" %>
