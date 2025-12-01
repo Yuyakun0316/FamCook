@@ -21,7 +21,9 @@
                 <div class="calendar-date"><%= date.day %></div>
                 <% @meals_by_date[date]&.each do |meal| %>
                   <div class="meal-icon" title="<%= meal.title %>">
+                   <%= link_to meal_path(meal), class: "meal-icon-link" do %>  
                     <%= icon_for(meal.icon_type) %>
+                    <% end %>
                   </div>
                 <% end %>
               <% end %>
