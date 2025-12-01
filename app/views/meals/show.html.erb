@@ -40,11 +40,14 @@
     </div>
 
   <!-- ✏️ 編集 / ❌ 削除 -->
-  <div class="meal-show-actions">
-    <%= link_to "編集", edit_meal_path(@meal), class: "meal-edit-btn" %>
-    <%= link_to "削除", meal_path(@meal),
-        data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？\n削除したデータは戻せません。" },
-        class: "meal-delete-btn" %>
+  <% if @meal.user == current_user %>
+    <div class="meal-show-actions">
+      <%= link_to "編集", edit_meal_path(@meal), class: "meal-edit-btn" %>
+      <%= link_to "削除", meal_path(@meal),
+          data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？\n削除したデータは戻せません。" },
+          class: "meal-delete-btn" %>
+    </div>
+  <% end %>
 
   <!-- ======================
      ⭐ コメント / 評価入力フォーム

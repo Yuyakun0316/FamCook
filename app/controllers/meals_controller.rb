@@ -2,6 +2,7 @@ class MealsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
   before_action :check_family, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @current_month = params[:month] ? Date.parse(params[:month]) : Date.current.beginning_of_month
@@ -94,6 +95,10 @@ class MealsController < ApplicationController
 
   def check_family
     redirect_to meals_path, alert: 'アクセス権限がありません。' if @meal.family_id != current_user.family_id
+  end
+
+  def ensure_correct_user
+  redirect_to meals_path, alert: "編集権限がありません。" unless @meal.user == current_user
   end
 
   def meal_params
