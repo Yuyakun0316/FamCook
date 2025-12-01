@@ -138,6 +138,14 @@
   margin-right: auto;
 }
 
+.memo-content.center-text {
+  text-align: center;
+}
+
+.memo-content.center-text .memo-text {
+  margin: 0 auto;
+}
+
 /* 1つのメモアイテム */
 .memo-item {
   background: #fff;
