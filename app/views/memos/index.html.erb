@@ -45,6 +45,12 @@
 
           <!-- 💬 メモ内容＋タグ（中央） -->
           <div class="memo-content">
+          <!-- 👤 投稿者表示＆時間 -->
+          <p class="memo-user-info">
+            👤 <%= memo.user.name.presence || memo.user.email %>
+            <span class="memo-date">（<%= time_ago(memo.created_at) %>）</span>
+          </p>
+          
           <p class="memo-text"><%= memo.content %></p>
 
           <span class="memo-tag <%= memo.category %>">
