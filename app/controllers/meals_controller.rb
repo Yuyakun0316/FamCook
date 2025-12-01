@@ -36,8 +36,7 @@ class MealsController < ApplicationController
   end
 
   def update
-    # set_meal & check_family で取得済み
-    if meal_params[:images].blank?
+    if meal_params[:images].nil? || meal_params[:images].reject(&:blank?).empty?
       if @meal.update(meal_params.except(:images))
         redirect_to @meal, notice: '献立を更新しました✨'
       else
