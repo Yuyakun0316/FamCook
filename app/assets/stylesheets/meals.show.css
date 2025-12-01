@@ -265,35 +265,6 @@
   opacity: 0.6;
 }
 
-/* ======================
-   🔮 AI献立アシスタント
-====================== */
-.meal-ai-box {
-  background: #FFF4F8;
-  padding: 15px;
-  border-radius: 12px;
-  margin-top: 20px;
-  border: 2px solid #FFD5E2;
-  color: #FF6EA7;
-  text-align: center;
-}
-
-.ai-btn {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 10px;
-  background: #FF6EA7;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.ai-btn.pink {
-  background: #FF6EA7;
-}
-
 .back-btn a {
   display: block;
   text-align: center;
