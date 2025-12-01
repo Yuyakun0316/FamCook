@@ -1,6 +1,15 @@
 <header class="home-header">
   <div class="app-title">🍚 FamCook</div>
-  <%= link_to settings_path do %>
-    <div class="settings-icon">⚙️</div>
-  <% end %>
+
+  <div class="header-right">
+    <% if user_signed_in? %>
+      <div class="header-user">
+        👤 <%= current_user.name.presence || current_user.email %>
+      </div>
+    <% end %>
+
+    <%= link_to settings_path do %>
+      <div class="settings-icon">⚙️</div>
+    <% end %>
+  </div>
 </header>
