@@ -15,6 +15,12 @@
     <%= @meal.date.strftime("%Y年 %-m月%-d日（#{%w(日 月 火 水 木 金 土)[@meal.date.wday]}）") %>
   </div>
 
+  <!-- 👤 投稿者 -->
+  <div class="meal-show-user">
+    <i class="fa-solid fa-user"></i>
+    <%= @meal.user == current_user ? "あなた" : "#{@meal.user.name}" %>
+  </div>
+
   <!-- 🍽 献立名 -->
   <div class="meal-title">
     <h2><%= @meal.title %></h2>

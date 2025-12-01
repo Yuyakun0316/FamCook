@@ -25,8 +25,16 @@
           <%= meal.date.strftime("%Y年 %-m月%-d日") %>
           （<%= jp_weekdays[meal.date.wday] %>）
         </div>
+
+        
+
         <div class="meal-title"><%= meal.title %></div>
         <div class="meal-description"><%= truncate(meal.description, length: 50) %></div>
+        <!-- 👤 投稿者表示 -->
+        <p class="meal-user">
+          <i class="fa-solid fa-user"></i>
+          👤 <%= meal.user == current_user ? 'あなた' : meal.user.name %>
+        </p>
         <%= link_to "詳細を見る >", meal_path(meal), class: "meal-detail-link" %>
       </div>
     </div>
