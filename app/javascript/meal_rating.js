@@ -1,13 +1,9 @@
-["turbo:load", "turbo:render"].forEach((eventName) => {
-  document.addEventListener(eventName, () => {
+  const initMealRating = () => {
     const stars = document.querySelectorAll("#star-rating .star");
     const hiddenRatingField = document.getElementById("hidden-rating-field");
     const form = document.querySelector("form[action*='comments']");
 
-    // ❗ 該当ページのみ処理
     if (!hiddenRatingField || stars.length === 0 || !form) return;
-
-    // 🔥 ⭐ここでイベントの多重登録防止！
     if (form.dataset.bound === "true") return;
     form.dataset.bound = "true";
 
@@ -18,11 +14,8 @@
         star.classList.toggle("active", index < rating);
       });
     };
-
-    // 初期状態反映
     updateStars(selectedRating);
 
-    // ⭐ 星クリック・ホバー処理
     stars.forEach((star) => {
       star.addEventListener("click", () => {
         selectedRating = Number(star.dataset.value);
@@ -30,63 +23,64 @@
         updateStars(selectedRating);
       });
 
-      star.addEventListener("mouseover", () => {
-        updateStars(Number(star.dataset.value));
-      });
-
-      star.addEventListener("mouseleave", () => {
-        updateStars(selectedRating);
-      });
+      star.addEventListener("mouseover", () => updateStars(Number(star.dataset.value)));
+      star.addEventListener("mouseleave", () => updateStars(selectedRating));
     });
 
-    // 🚀 Ajax送信
     form.addEventListener("submit", (event) => {
-      // ⭐ 未選択チェック
       if (selectedRating === 0) {
         alert("⭐ 評価を選択してください！");
         return;
       }
-
       event.preventDefault();
 
       const formData = new FormData(form);
-      const url = form.action;
       const csrfToken = document.querySelector("meta[name='csrf-token']").content;
 
-      fetch(url, {
+      fetch(form.action, {
         method: "POST",
-        headers: {
-          "X-CSRF-Token": csrfToken,
-          "Accept": "application/json"
-        },
+        headers: { "X-CSRF-Token": csrfToken, "Accept": "application/json" },
         body: formData
       })
         .then(response => response.json())
         .then(data => {
-          if (data.success) {
-            console.log("コメントを投稿しました");
-
-            // 🔁 入力リセット
-            form.reset();
-            selectedRating = 0;
-            hiddenRatingField.value = 0;
-            updateStars(0);
-
-            // 🆕 最新コメントを最上部に挿入
-            const commentList = document.querySelector(".meal-comment-list");
-            if (commentList && data.comment_html) {
-              const firstComment = commentList.querySelector(".comment-card");
-              if (firstComment) {
-                firstComment.insertAdjacentHTML("beforebegin", data.comment_html);
-              } else {
-                commentList.insertAdjacentHTML("beforeend", data.comment_html);
-              }
-            }
-          } else {
+          if (!data.success) {
             alert("投稿に失敗しました:\n" + data.errors.join(", "));
+            return;
           }
+
+          // 入力リセット
+          form.reset();
+          selectedRating = 0;
+          hiddenRatingField.value = 0;
+          updateStars(0);
+
+          // コメント反映
+          const commentList = document.querySelector(".meal-comment-list");
+          if (commentList && data.comment_html) {
+            const firstComment = commentList.querySelector(".comment-card");
+            if (firstComment) {
+              firstComment.insertAdjacentHTML("beforebegin", data.comment_html);
+            } else {
+              commentList.insertAdjacentHTML("beforeend", data.comment_html);
+            }
+          }
+
+          // ⭐ 平均評価リアルタイム更新
+          const avgArea = document.querySelector("#average-rating-area");
+          if (avgArea && data.average_rating_html) {
+            avgArea.innerHTML = data.average_rating_html;
+          }
+
+          // 「まだコメントありません」削除
+          const noCommentMsg = document.querySelector(".no-comments");
+          if (noCommentMsg) noCommentMsg.remove();
         })
         .catch(error => console.error("通信エラー:", error));
     });
+  };
+
+  // 🚀 ページ読み込み時（リロード回避）
+  ["turbo:load", "turbo:render", "DOMContentLoaded"].forEach((eventName) => {
+    document.addEventListener(eventName, initMealRating);
   });
-});

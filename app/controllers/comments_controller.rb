@@ -22,6 +22,11 @@ class CommentsController < ApplicationController
               partial: 'comments/comment',
               locals: { comment: @comment },
               formats: [:html]
+            ),
+            average_rating_html: render_to_string(
+              partial: 'meals/average_rating',
+              locals: { average_rating: @meal.average_rating },
+              formats: [:html]
             )
           }, status: :created
         end
