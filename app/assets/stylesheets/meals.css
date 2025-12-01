@@ -16,7 +16,7 @@
 /* 画像 */
 .image-preview-area {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
   margin-bottom: 10px;
 }
@@ -37,18 +37,23 @@
   cursor: pointer;
 }
 
+/* 画像あり */
+.image-slot.has-image {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+/* 画像自体 */
 .image-slot img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 10px;
+  display: block;
 }
 
-.image-slot.has-image {
-  border: none;
-  background-size: cover;
-}
-
+/* 削除ボタン */
 .delete-btn {
   position: absolute;
   top: 5px;
@@ -62,7 +67,11 @@
   text-align: center;
   line-height: 20px;
   cursor: pointer;
-  display: none; /* 画像があるときだけ表示 */
+  display: none;
+}
+
+.image-slot.has-image .delete-btn {
+  display: block;
 }
 
 .meal-image-hidden {
@@ -70,10 +79,6 @@
   width: 0;
   height: 0;
   position: absolute;
-}
-
-.image-slot.has-image .delete-btn {
-  display: block;
 }
 
 /* タイトル */

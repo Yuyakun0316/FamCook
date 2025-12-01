@@ -28,27 +28,27 @@
 
       const reader = new FileReader();
       reader.onload = (e) => {
-        emptySlot.style.backgroundImage = `url('${e.target.result}')`;
+        // 🎯 画像を背景ではなく「imgタグ」で表示＋しっかり中央寄せ
+        emptySlot.innerHTML = `<img src="${e.target.result}" alt="meal image">`;
         emptySlot.classList.add("has-image");
-        emptySlot.textContent = "";
 
-        // ❌ 削除ボタン
+        // 🗑️ 削除ボタン
         const deleteBtn = document.createElement("span");
         deleteBtn.className = "delete-btn";
         deleteBtn.textContent = "×";
         emptySlot.appendChild(deleteBtn);
 
-        // 🗑️ 削除処理
+        // 🔁 削除処理
         deleteBtn.addEventListener("click", (ev) => {
           ev.stopPropagation();
 
-          // 当前スロットが何番目か確認して一致したファイルを削除
+          // 何番目のスロットか確認し filesArray から削除
           const slotIndex = Array.from(slots).indexOf(emptySlot);
           filesArray.splice(slotIndex, 1);
 
-          emptySlot.style.backgroundImage = "";
+          // スロットの初期化
+          emptySlot.innerHTML = "+";
           emptySlot.classList.remove("has-image");
-          emptySlot.textContent = "+";
           deleteBtn.remove();
         });
       };
