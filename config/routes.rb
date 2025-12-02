@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   end
 
   get 'settings', to: 'settings#index'
+
+  # 👨‍👩‍👧‍👦 メンバー管理ページ
+  resources :family_members, only: [:index, :destroy]
 end

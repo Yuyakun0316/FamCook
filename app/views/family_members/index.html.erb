@@ -1,0 +1,41 @@
+<div class="settings-section">
+  <h2 class="settings-title">👨‍👩‍👧‍👦 家族メンバー一覧</h2>
+
+  <div class="family-members-list">
+    <% @members.each do |member| %>
+      <div class="family-member-card <%= 'owner' if member == @family.owner %>">
+
+        <div class="family-member-info">
+          <% if member == @family.owner %>
+            <span class="member-role-icon">👑</span>
+            <span class="member-name"><%= member.name %></span>
+            <span class="member-role-label">管理者</span>
+
+          <% elsif member == current_user %>
+            <span class="member-role-icon">👤</span>
+            <span class="member-name"><%= member.name %></span>
+            <span class="member-role-label you">あなた</span>
+
+          <% else %>
+            <span class="member-role-icon">👤</span>
+            <span class="member-name"><%= member.name %></span>
+          <% end %>
+        </div>
+
+        <%# 👑 管理者だけ & 管理者本人以外のときだけ削除ボタン %>
+        <% if current_user.family_owner? && member != @family.owner %>
+          <%= button_to "削除",
+                family_member_path(member),
+                method: :delete,
+                data: { turbo_confirm: "#{member.name}さんを家族から外しますか？" },
+                class: "member-delete-btn" %>
+        <% end %>
+
+      </div>
+    <% end %>
+  </div>
+
+  <div class="settings-back-link">
+    <%= link_to "＜ 設定に戻る", settings_path %>
+  </div>
+</div>
