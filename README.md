@@ -212,7 +212,21 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 ---
 
-## 🏠 8. 共通レイアウト / UI（ヘッダー・フッター）
+## 👨‍👩‍👧‍👦 8. 家族管理機能（Family Management）
+家族みんなで使う FamCook を安全に・便利に使うための管理機能です。
+家族グループの作成者が「管理者」となり、メンバーの管理を行えます。
+
+**特徴**
+- 家族グループの管理者を自動設定(最初に家族グループ作ったユーザーが管理者) 
+- 家族メンバー一覧ページ 
+- メンバー削除（管理者のみ）
+
+**画像（後で貼る）**  
+（Gyazo URL）
+
+---
+
+## 🏠 9. 共通レイアウト / UI（ヘッダー・フッター）
 どのページからでも主要機能にアクセスできるように設計しています。
 
 **特徴**
@@ -231,10 +245,10 @@ FamCook の基本的な利用手順は以下のとおりです。
 ---
 
 ## 🗂 データベース設計
-[![Image from Gyazo](https://i.gyazo.com/240e1b80a27c4f802592003f0c497879.png)](https://gyazo.com/240e1b80a27c4f802592003f0c497879)
+[![Image from Gyazo](https://i.gyazo.com/6efafd90c703cc8a6bc714080b42c7e9.png)](https://gyazo.com/6efafd90c703cc8a6bc714080b42c7e9)
 
 ## 📱 画面遷移図
-[![Image from Gyazo](https://i.gyazo.com/075b4a3be0a609d4cec8dd7c6e4d13da.png)](https://gyazo.com/075b4a3be0a609d4cec8dd7c6e4d13da)
+[![Image from Gyazo](https://i.gyazo.com/f22c6c1ca637514651bb2ea26e0a219e.png)](https://gyazo.com/f22c6c1ca637514651bb2ea26e0a219e)
 
 ---
 
