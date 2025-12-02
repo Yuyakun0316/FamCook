@@ -14,25 +14,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
         return render :new, status: :unprocessable_entity
       end
 
+      new_family = false
     else
-      # 🔥 新規ファミリー作成（ownerはこのユーザーになる）
       family = Family.new(code: SecureRandom.hex(4))
+      new_family = true
     end
 
     resource.family = family
 
-    # ユーザー保存
     if resource.save
-      # 🔥 family.owner を設定（新規作成の場合）
-      if family.owner.nil?
+      # 新規ファミリーなら owner を設定
+      if new_family
         family.owner = resource
-        family.save!   # ここで owner_id NOT NULL が満たされる
+        family.save!
       end
 
       set_flash_message!(:notice, "登録が完了しました！（家族ID: #{family.code}）")
       sign_up(resource_name, resource)
       redirect_to root_path
     else
+      clean_up_passwords resource
+      set_minimum_password_length
       render :new, status: :unprocessable_entity
     end
   end
