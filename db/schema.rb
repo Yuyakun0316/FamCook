@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_12_02_062916) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_02_160417) do
   create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_02_062916) do
     t.string "code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "owner_id", null: false
+    t.bigint "owner_id"
     t.index ["code"], name: "index_families_on_code", unique: true
     t.index ["owner_id"], name: "index_families_on_owner_id"
   end
