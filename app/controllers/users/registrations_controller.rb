@@ -19,22 +19,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       family = Family.new(code: SecureRandom.hex(4))
       new_family = true
-      family.save!  
     end
 
     resource.family = family
 
     if resource.save
-
-      # 新規ファミリーなら owner を設定
+      # 新規ファミリーなら owner を設定して保存
       if new_family
-        family.update!(owner: resource)
+        family.owner = resource
+        family.save!
       end
 
       set_flash_message!(:notice, "登録が完了しました！（家族ID: #{family.code}）")
       sign_up(resource_name, resource)
       redirect_to root_path
-
     else
       clean_up_passwords resource
       set_minimum_password_length
