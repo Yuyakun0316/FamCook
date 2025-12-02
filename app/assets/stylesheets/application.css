@@ -72,7 +72,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 8px;
-  max-width: 45%;
+  flex-shrink: 0;
   justify-content: flex-end;
 }
 
@@ -80,6 +80,10 @@ html, body {
   font-size: 14px;
   color: #555;
   gap: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 110px;
 }
 
 .settings-icon {
@@ -95,8 +99,12 @@ html, body {
 
 .app-title {
   color: #ff6ea7;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 32px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  text-shadow: 2px 2px 0 #ffd4e8;
+  white-space: nowrap;
+  flex-shrink: 0;
+  max-width: 150px;
 }
 
 /* ===================

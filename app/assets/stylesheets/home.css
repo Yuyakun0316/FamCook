@@ -27,6 +27,11 @@
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
+.calendar-card h2 {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  text-shadow: 2px 2px 0 #ffd4e8;
+}
+
 .calendar-month-switch {
   display: flex;
   justify-content: space-between;

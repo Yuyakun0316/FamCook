@@ -1,6 +1,7 @@
 .meals-index-container {
   width: 90%;
-  margin: 20px auto;
+  margin: 0 auto;
+  padding: 20px 15px;
 }
 
 .meals-index-title {
@@ -9,6 +10,8 @@
   color: #ff6ea7;
   margin-bottom: 15px;
   text-align: center;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  text-shadow: 2px 2px 0 #ffd4e8;
 }
 
 .meals-month-switch {

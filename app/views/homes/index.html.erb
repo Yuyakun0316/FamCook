@@ -2,7 +2,7 @@
 <div class="home-container">
   <!-- カレンダー -->
   <div class="calendar-card">
-    <h2><%= @current_month.strftime('%Y年 %-m月の献立記録') %></h2>
+    <h2><%= @current_month.strftime('%Y年 %-m月 献立記録') %></h2>
       <div class="calendar-month-switch">
         <%= link_to "< #{(@current_month - 1.month).strftime('%-m月')}", root_path(month: (@current_month - 1.month)), class: "month-btn" %>
         <%= link_to "#{(@current_month + 1.month).strftime('%-m月')} >", root_path(month: (@current_month + 1.month)), class: "month-btn" %>

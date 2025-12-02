@@ -7,9 +7,10 @@
 .settings-title {
   text-align: center;
   font-size: 24px;
-  font-weight: bold;
   color: #ff6ea7;
   margin-bottom: 20px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  text-shadow: 2px 2px 0 #ffd4e8;
 }
 
 .settings-section {
