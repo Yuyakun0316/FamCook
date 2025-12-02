@@ -1,0 +1,95 @@
+/* 📌 メンバー一覧コンテナ */
+.family-members-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+/* 📌 メンバーカード（バランスよく可愛い版） */
+.family-member-card {
+  width: 92%;
+  background: #ffe6f2;
+  padding: 14px 16px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1.4px solid #ffc5dd;
+  box-shadow: 0 1px 3px rgba(255, 100, 160, 0.15);
+  transition: 0.2s ease;
+}
+
+/* 👑 管理者カードはほんのり強調 */
+.family-member-card.owner {
+  background: #ffe0ec;
+  border-color: #ffa3c7;
+  box-shadow: 0 2px 6px rgba(255, 100, 160, 0.25);
+  border: 2px solid #ff9ec2;
+}
+
+/* 👤 メンバー情報（左側） */
+.family-member-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+/* アイコン少し大きくして可愛く */
+.member-role-icon {
+  font-size: 20px;
+}
+
+/* メンバー名 */
+.member-name {
+  font-weight: 600;
+  color: #555;
+}
+
+/* 「管理者」「あなた」ラベル */
+.member-role-label {
+  font-size: 11px;
+  color: #666;
+}
+
+.member-role-label.you {
+  color: #ff6ea7;
+  font-weight: bold;
+}
+
+/* 🗑 削除ボタン — バランス修正版 */
+.member-delete-btn {
+  background: #ff6ea7;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-size: 12px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(255, 100, 160, 0.2);
+  transition: 0.2s ease;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.member-delete-btn:hover {
+  background: #ff4f8a;
+}
+
+/* 🔙 戻るリンク */
+.settings-back-link {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.settings-back-link a {
+  color: #ff6ea7;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.settings-back-link a:hover {
+  text-decoration: underline;
+}
