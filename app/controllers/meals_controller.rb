@@ -97,7 +97,7 @@ class MealsController < ApplicationController
   end
 
   def ensure_correct_user
-  redirect_to meals_path, alert: "編集権限がありません。" unless @meal.user == current_user
+    redirect_to meals_path, alert: '編集権限がありません。' unless @meal.user == current_user
   end
 
   def meal_params

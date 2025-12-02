@@ -12,13 +12,13 @@ class FamilyMembersController < ApplicationController
 
     # 家族管理者は削除できない
     if member == @family.owner
-      redirect_to family_members_path, alert: "家族管理者は削除できません。"
+      redirect_to family_members_path, alert: '家族管理者は削除できません。'
       return
     end
 
     # 自分自身は削除できない
     if member == current_user
-      redirect_to family_members_path, alert: "自分自身は削除できません。"
+      redirect_to family_members_path, alert: '自分自身は削除できません。'
       return
     end
 
@@ -32,14 +32,14 @@ class FamilyMembersController < ApplicationController
 
   def set_family
     @family = current_user.family
-    unless @family
-      redirect_to settings_path, alert: "家族に所属していません。"
-    end
+    return if @family
+
+    redirect_to settings_path, alert: '家族に所属していません。'
   end
 
   def ensure_family_owner!
-    unless current_user.family_owner?
-      redirect_to family_members_path, alert: "管理者のみ操作できます。"
-    end
+    return if current_user.family_owner?
+
+    redirect_to family_members_path, alert: '管理者のみ操作できます。'
   end
 end
