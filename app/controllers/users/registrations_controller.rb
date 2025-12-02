@@ -2,10 +2,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-    # ユーザーが入力した family_code
     entered_code = resource.family_code&.strip
 
+    # -------------------------
     # 家族を検索 or 新規作成
+    # -------------------------
     if entered_code.present?
       family = Family.find_by(code: entered_code)
 
@@ -18,20 +19,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       family = Family.new(code: SecureRandom.hex(4))
       new_family = true
+      family.save!  
     end
 
     resource.family = family
 
     if resource.save
+
       # 新規ファミリーなら owner を設定
       if new_family
-        family.owner = resource
-        family.save!
+        family.update!(owner: resource)
       end
 
       set_flash_message!(:notice, "登録が完了しました！（家族ID: #{family.code}）")
       sign_up(resource_name, resource)
       redirect_to root_path
+
     else
       clean_up_passwords resource
       set_minimum_password_length
