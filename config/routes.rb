@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'family_members/index'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -19,6 +18,6 @@ Rails.application.routes.draw do
 
   get 'settings', to: 'settings#index'
 
-  # 👨‍👩‍👧‍👦 メンバー管理ページ  
+  # 👨‍👩‍👧‍👦 メンバー管理ページ
   resources :family_members, only: [:index, :destroy]
 end
