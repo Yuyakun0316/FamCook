@@ -6,8 +6,21 @@ class Meal < ApplicationRecord
 
   enum meal_type: { breakfast: 0, lunch: 1, dinner: 2, snack: 3 }, _default: :dinner
   enum icon_type: {
-    rice: 0, japanese: 1, western: 2, chinese: 3,
-    fish: 4, healthy: 5, kids: 6, dessert: 7, drink: 8
+    don: 0,           # 🍚 丼・ごはん系
+    curry: 1,         # 🍛 カレー
+    meat: 2,          # 🍖 肉料理
+    fried: 3,         # 🍤 揚げ物
+    fish: 4,          # 🐟 魚料理
+    japanese: 5,      # 🍣 和食系
+    bento: 6,         # 🍱 弁当
+    pasta: 7,         # 🍝 パスタ系
+    noodles: 8,       # 🍜 麺類
+    chinese: 9,       # 🥟 中華系
+    western_fast: 10, # 🍕 洋食/ファスト
+    bread: 11,        # 🍞 パン系
+    nabe: 12,         # 🍲 鍋料理
+    kids: 13,         # 🍔 子供向け
+    salad: 14         # 🥗 サラダ系
   }, _prefix: :icon
 
   validates :title, presence: true, length: { maximum: 50 }

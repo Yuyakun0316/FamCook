@@ -44,21 +44,27 @@
       <!-- 料理名 -->
       <div class="meal-field">
         <label>🍽️ 献立名（メイン）</label>
-        <%= f.text_field :title, class: "meal-input", placeholder: "例：鶏肉の照り焼きとひじきの煮物" %>
+        <%= f.text_field :title, class: "meal-input", placeholder: "例：ハンバーグ・オムライスなど" %>
       </div>
 
       <div class="meal-field">
         <label>🍽️ 食事アイコン</label>
         <%= f.select :icon_type, [
-            ["🍚 ごはん系", "rice"],
-            ["🍣 和食系", "japanese"],
-            ["🍝 洋食系", "western"],
-            ["🥟 中華系", "chinese"],
+            ["🍚 丼・ごはん系", "don"],
+            ["🍛 カレー", "curry"],
+            ["🍖 肉料理", "meat"],
+            ["🍤 揚げ物", "fried"],
             ["🐟 魚料理", "fish"],
-            ["🥗 健康・野菜", "healthy"],
-            ["🍔 子ども向け", "kids"],
-            ["🍰 デザート", "dessert"],
-            ["☕️ 飲み物", "drink"]
+            ["🍣 和食系", "japanese"],
+            ["🍱 弁当", "bento"],
+            ["🍝 パスタ", "pasta"],
+            ["🍜 麺類", "noodles"],
+            ["🥟 中華系", "chinese"],
+            ["🍕 洋食／ファストフード", "western_fast"],
+            ["🍞 パン系", "bread"],
+            ["🍲 鍋料理", "nabe"],
+            ["🍔 子供向け", "kids"],
+            ["🥗 サラダ・健康系", "salad"]
           ],
           { include_blank: "選択してください" },
           class: "meal-input"%>
@@ -67,7 +73,7 @@
       <!-- メモ -->
       <div class="meal-field">
         <label>📝 メモ / 感想</label>
-        <%= f.text_area :description, class: "meal-textarea", placeholder: "味や家族の反応など記録しましょう" %>
+        <%= f.text_area :description, class: "meal-textarea", placeholder: "味付けや家族の反応など記録しましょう" %>
       </div>
 
       <!-- 投稿ボタン -->
