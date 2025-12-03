@@ -17,21 +17,32 @@
     updateStars(selectedRating);
 
     stars.forEach((star) => {
+      // ⭐ クリックで選択
       star.addEventListener("click", () => {
         selectedRating = Number(star.dataset.value);
         hiddenRatingField.value = selectedRating;
         updateStars(selectedRating);
       });
 
-      star.addEventListener("mouseover", () => updateStars(Number(star.dataset.value)));
-      star.addEventListener("mouseleave", () => updateStars(selectedRating));
+      // ⭐ ホバー時
+      star.addEventListener("mouseover", () => {
+        updateStars(Number(star.dataset.value));
+      });
+
+      star.addEventListener("mouseleave", () => {
+        updateStars(selectedRating);
+      });
     });
 
+    // フォーム送信
     form.addEventListener("submit", (event) => {
+      // ⭐ 0 のままならエラー
       if (selectedRating === 0) {
         alert("⭐ 評価を選択してください！");
+        event.preventDefault();
         return;
       }
+
       event.preventDefault();
 
       const formData = new FormData(form);
@@ -49,13 +60,13 @@
             return;
           }
 
-          // 入力リセット
+          // ★ 入力リセット
           form.reset();
           selectedRating = 0;
           hiddenRatingField.value = 0;
           updateStars(0);
 
-          // コメント反映
+          // ★ 新しいコメントを先頭に挿入
           const commentList = document.querySelector(".meal-comment-list");
           if (commentList && data.comment_html) {
             const firstComment = commentList.querySelector(".comment-card");
@@ -66,13 +77,13 @@
             }
           }
 
-          // ⭐ 平均評価リアルタイム更新
+          // ★ 平均評価リアルタイム更新
           const avgArea = document.querySelector("#average-rating-area");
           if (avgArea && data.average_rating_html) {
             avgArea.innerHTML = data.average_rating_html;
           }
 
-          // 「まだコメントありません」削除
+          // 「まだコメントありません」メッセージ削除
           const noCommentMsg = document.querySelector(".no-comments");
           if (noCommentMsg) noCommentMsg.remove();
         })
@@ -80,7 +91,7 @@
     });
   };
 
-  // 🚀 ページ読み込み時（リロード回避）
+  // 🚀 各ページ読み込み時
   ["turbo:load", "turbo:render", "DOMContentLoaded"].forEach((eventName) => {
     document.addEventListener(eventName, initMealRating);
   });
