@@ -6,3 +6,4 @@ import "memos_pin"
 import "memo_delete"
 import "meal_rating"
 import "meal_image_preview"
+import "meal_slider";
