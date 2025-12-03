@@ -245,7 +245,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 ---
 
 ## 🗂 データベース設計
-[![Image from Gyazo](https://i.gyazo.com/6efafd90c703cc8a6bc714080b42c7e9.png)](https://gyazo.com/6efafd90c703cc8a6bc714080b42c7e9)
+[![Image from Gyazo](https://i.gyazo.com/d2dbb389af54187f6361cc74f9705659.png)](https://gyazo.com/d2dbb389af54187f6361cc74f9705659)
 
 ## 📱 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/f22c6c1ca637514651bb2ea26e0a219e.png)](https://gyazo.com/f22c6c1ca637514651bb2ea26e0a219e)
