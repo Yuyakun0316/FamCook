@@ -1,6 +1,6 @@
 document.addEventListener("turbo:load", () => {
   const track = document.querySelector(".meal-slider-track");
-  if (!track) return; // ← スライダーが無いページでは終了
+  if (!track) return;
 
   const slides = document.querySelectorAll(".meal-slide");
   const prevBtn = document.querySelector(".meal-slider-nav.prev");
@@ -10,11 +10,12 @@ document.addEventListener("turbo:load", () => {
   const totalSlides = slides.length;
 
   const updateSlider = () => {
+    track.style.transition = "transform 0.3s ease";
     track.style.transform = `translateX(-${currentIndex * 100}%)`;
   };
 
   // ============================================
-  // 🔒 ボタンが無い（画像1枚）ならイベントを付けない
+  // ボタンクリック
   // ============================================
   if (prevBtn && nextBtn && totalSlides > 1) {
     prevBtn.addEventListener("click", () => {
@@ -29,67 +30,44 @@ document.addEventListener("turbo:load", () => {
   }
 
   // ============================================
-  // ✨ スワイプ（タッチ操作）
-  // → 画像1枚でも問題なし
+  // スワイプ処理（ループ対応・見た目も追従）
   // ============================================
   let startX = 0;
-  let moveX = 0;
-  let isDragging = false;
+  let currentTranslate = 0;
+  let previousTranslate = 0;
+  let dragging = false;
+
+  const setPosition = (translate) => {
+    track.style.transition = "none";
+    track.style.transform = `translateX(${translate}px)`;
+  };
 
   track.addEventListener("touchstart", (e) => {
-    if (totalSlides <= 1) return; // ← スワイプも1枚なら無効化
+    if (totalSlides <= 1) return;
     startX = e.touches[0].clientX;
-    isDragging = true;
+    previousTranslate = -currentIndex * track.clientWidth;
+    dragging = true;
   });
 
   track.addEventListener("touchmove", (e) => {
-    if (!isDragging || totalSlides <= 1) return;
-    moveX = e.touches[0].clientX - startX;
+    if (!dragging) return;
+    const x = e.touches[0].clientX;
+    currentTranslate = previousTranslate + (x - startX);
+    setPosition(currentTranslate);
   });
 
   track.addEventListener("touchend", () => {
-    if (totalSlides <= 1) return;
+    if (!dragging) return;
+    dragging = false;
 
-    isDragging = false;
+    const moved = currentTranslate - previousTranslate;
 
-    if (Math.abs(moveX) > 50) {
-      currentIndex = moveX < 0
-        ? (currentIndex + 1) % totalSlides
-        : (currentIndex - 1 + totalSlides) % totalSlides;
-
-      updateSlider();
+    if (moved < -50) {
+      currentIndex = (currentIndex + 1) % totalSlides;
+    } else if (moved > 50) {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     }
 
-    moveX = 0;
-  });
-
-  // ============================================
-  // ✨ PC ドラッグ対応
-  // ============================================
-  track.addEventListener("mousedown", (e) => {
-    if (totalSlides <= 1) return;
-    startX = e.clientX;
-    isDragging = true;
-  });
-
-  track.addEventListener("mousemove", (e) => {
-    if (!isDragging || totalSlides <= 1) return;
-    moveX = e.clientX - startX;
-  });
-
-  track.addEventListener("mouseup", () => {
-    if (!isDragging || totalSlides <= 1) return;
-
-    isDragging = false;
-
-    if (Math.abs(moveX) > 50) {
-      currentIndex = moveX < 0
-        ? (currentIndex + 1) % totalSlides
-        : (currentIndex - 1 + totalSlides) % totalSlides;
-
-      updateSlider();
-    }
-
-    moveX = 0;
+    updateSlider();
   });
 });
