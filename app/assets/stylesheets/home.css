@@ -133,6 +133,10 @@
   text-decoration: none;
 }
 
+.post-button:hover {
+  background: #ff5189;
+}
+
 /* ======================
    🔮 AI献立アシスタント
 ====================== */
@@ -156,6 +160,10 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+
+.ai-btn:hover {
+  background: #ff5189;
 }
 
 /* ===================
