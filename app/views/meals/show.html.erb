@@ -1,14 +1,25 @@
 <div class="meal-show-container">
 <h2 class="meals-index-title">献立詳細</h2>
 
-  <!-- 📸 写真 -->
-  <div class="meal-show-image">
+  <!-- 📸 写真（スライダー） -->
     <% if @meal.images.attached? %>
-      <%= image_tag @meal.images.first.variant(resize_to_limit: [800, 600]), class: "meal-show-img" %>
+      <div class="meal-slider">
+        <div class="meal-slider-track">
+          <% @meal.images.each do |image| %>
+            <div class="meal-slide">
+              <%= image_tag image.variant(resize_to_limit: [800, 600]), class: "meal-slide-img" %>
+            </div>
+          <% end %>
+        </div>
+
+        <% if @meal.images.size > 1 %>
+          <button type="button" class="meal-slider-nav prev">‹</button>
+          <button type="button" class="meal-slider-nav next">›</button>
+        <% end %>
+      </div>
     <% else %>
       <div class="meal-no-img">画像なし</div>
     <% end %>
-  </div>
 
   <!-- 📅 日付 -->
   <div class="meal-show-date">

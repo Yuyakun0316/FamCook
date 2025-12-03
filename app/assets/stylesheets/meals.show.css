@@ -6,12 +6,14 @@
 }
 
 .meal-show-img {
-  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 90%;
   border-radius: 16px;
   display: block;
   margin: 0 auto;
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
   border: 2px solid #FFD5E2;
+  object-fit: cover;
 }
 
 .meal-show-date {
@@ -281,3 +283,52 @@
   color: gray;
   text-decoration: none;
 }
+
+/* ============================
+   📸 スライダー（複数画像表示）
+============================ */
+
+.meal-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  border: 2px solid #FFD5E2;
+}
+
+.meal-slider-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.meal-slide {
+  min-width: 100%;
+}
+
+.meal-slide-img {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* ← → ボタン */
+.meal-slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  color: black;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.meal-slider-nav.prev { left: 8px; }
+.meal-slider-nav.next { right: 8px; }
