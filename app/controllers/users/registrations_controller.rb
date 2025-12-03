@@ -18,16 +18,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
       new_family = false
     else
       family = Family.new(code: SecureRandom.hex(4))
+      family.save!   
       new_family = true
     end
 
+    # ユーザーに家族をセット
     resource.family = family
 
+    # ユーザー保存（ここで family_id が入る）
     if resource.save
-      # 新規ファミリーなら owner を設定して保存
+
+      # 新規ファミリーなら owner を設定
       if new_family
-        family.owner = resource
-        family.save!
+        family.update!(owner: resource)
       end
 
       set_flash_message!(:notice, "登録が完了しました！（家族ID: #{family.code}）")
