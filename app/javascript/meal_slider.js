@@ -1,6 +1,7 @@
 document.addEventListener("turbo:load", () => {
   const track = document.querySelector(".meal-slider-track");
-  if (!track) return;
+  if (!track || track.dataset.bound === "true") return; 
+  track.dataset.bound = "true"; // ← 重複実行防止！
 
   const slides = document.querySelectorAll(".meal-slide");
   const prevBtn = document.querySelector(".meal-slider-nav.prev");
@@ -15,7 +16,7 @@ document.addEventListener("turbo:load", () => {
   };
 
   // ============================================
-  // ボタンクリック
+  // 🔘 ボタンクリック
   // ============================================
   if (prevBtn && nextBtn && totalSlides > 1) {
     prevBtn.addEventListener("click", () => {
@@ -30,7 +31,7 @@ document.addEventListener("turbo:load", () => {
   }
 
   // ============================================
-  // スワイプ処理（ループ対応・見た目も追従）
+  // 👆 スワイプ処理（ループ対応・追随式）
   // ============================================
   let startX = 0;
   let currentTranslate = 0;
@@ -62,11 +63,8 @@ document.addEventListener("turbo:load", () => {
 
     const moved = currentTranslate - previousTranslate;
 
-    if (moved < -50) {
-      currentIndex = (currentIndex + 1) % totalSlides;
-    } else if (moved > 50) {
-      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    }
+    if (moved < -50) currentIndex = (currentIndex + 1) % totalSlides;
+    else if (moved > 50) currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
 
     updateSlider();
   });
