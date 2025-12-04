@@ -127,7 +127,7 @@ FamCook の基本的な利用手順は以下のとおりです。
   - 献立一覧  
   - 絞り込み  
   - メモ  
-- プロフィール設定はヘッダーのアイコンからアクセスできます  
+  - プロフィール設定はヘッダーのアイコンからアクセスできます  
 
 ---
 
@@ -145,7 +145,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 **[献立投稿画面]** 
 
-([![Image from Gyazo](https://i.gyazo.com/6fdb7017459f811df41f7530a8836c69.gif)](https://gyazo.com/6fdb7017459f811df41f7530a8836c69))
+[![Image from Gyazo](https://i.gyazo.com/6fdb7017459f811df41f7530a8836c69.gif)](https://gyazo.com/6fdb7017459f811df41f7530a8836c69)
 
 ---
 
@@ -160,7 +160,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 **[献立編集画面]**  
 
-（[![Image from Gyazo](https://i.gyazo.com/4d6b9d0b2e07906bc492104546c9ae0f.gif)](https://gyazo.com/4d6b9d0b2e07906bc492104546c9ae0f)）
+[![Image from Gyazo](https://i.gyazo.com/4d6b9d0b2e07906bc492104546c9ae0f.gif)](https://gyazo.com/4d6b9d0b2e07906bc492104546c9ae0f)
 
 ---
 
@@ -173,7 +173,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 **[献立画面]**  
 
-（[![Image from Gyazo](https://i.gyazo.com/7093a1e268f5856040eeadce92464e55.gif)](https://gyazo.com/7093a1e268f5856040eeadce92464e55)）
+[![Image from Gyazo](https://i.gyazo.com/7093a1e268f5856040eeadce92464e55.gif)](https://gyazo.com/7093a1e268f5856040eeadce92464e55)
 
 ---
 
@@ -188,7 +188,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 **[献立詳細画面]**  
 
-（[![Image from Gyazo](https://i.gyazo.com/7a17310fa083b391a8b1e6c044a259f5.gif)](https://gyazo.com/7a17310fa083b391a8b1e6c044a259f5)）
+[![Image from Gyazo](https://i.gyazo.com/7a17310fa083b391a8b1e6c044a259f5.gif)](https://gyazo.com/7a17310fa083b391a8b1e6c044a259f5)
 
 ---
 
@@ -202,7 +202,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 **[ホーム画面]**
 
-（[![Image from Gyazo](https://i.gyazo.com/67905915dc621645b6ccc469b8145d1e.gif)](https://gyazo.com/67905915dc621645b6ccc469b8145d1e)）
+[![Image from Gyazo](https://i.gyazo.com/67905915dc621645b6ccc469b8145d1e.gif)](https://gyazo.com/67905915dc621645b6ccc469b8145d1e)
 
 ---
 
@@ -216,7 +216,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 **[絞り込み画面]**
 
-（[![Image from Gyazo](https://i.gyazo.com/394e02699164b1dad7fe84d193d37a08.gif)](https://gyazo.com/394e02699164b1dad7fe84d193d37a08)）
+[![Image from Gyazo](https://i.gyazo.com/394e02699164b1dad7fe84d193d37a08.gif)](https://gyazo.com/394e02699164b1dad7fe84d193d37a08)
 
 ---
 
@@ -230,7 +230,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 **[メモ画面]**
 
-（[![Image from Gyazo](https://i.gyazo.com/b87bc52c8940b98dbc8592d335f3e926.gif)](https://gyazo.com/b87bc52c8940b98dbc8592d335f3e926)）
+[![Image from Gyazo](https://i.gyazo.com/b87bc52c8940b98dbc8592d335f3e926.gif)](https://gyazo.com/b87bc52c8940b98dbc8592d335f3e926)
 
 ---
 
@@ -246,7 +246,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 **[家族一覧画面]**
 
-（[![Image from Gyazo](https://i.gyazo.com/47d88ddd7904ce40ef4bc1e6940fefec.gif)](https://gyazo.com/47d88ddd7904ce40ef4bc1e6940fefec)）
+[![Image from Gyazo](https://i.gyazo.com/47d88ddd7904ce40ef4bc1e6940fefec.gif)](https://gyazo.com/47d88ddd7904ce40ef4bc1e6940fefec)
 
 ---
 
@@ -260,7 +260,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 **[画面移動]**  
 
-（[![Image from Gyazo](https://i.gyazo.com/951d8a91680fb6fdcf439b89693108b3.gif)](https://gyazo.com/951d8a91680fb6fdcf439b89693108b3)）
+[![Image from Gyazo](https://i.gyazo.com/951d8a91680fb6fdcf439b89693108b3.gif)](https://gyazo.com/951d8a91680fb6fdcf439b89693108b3)
 
 ---
 
