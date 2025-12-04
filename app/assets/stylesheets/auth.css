@@ -41,7 +41,7 @@ body {
   border-radius: 10px;
   background: #F8E8F0;
   color: #444;
-  font-size: 14px;
+  font-size: 16px;
   box-sizing: border-box;
   display: block;
 }
@@ -90,8 +90,13 @@ body {
   margin-top: 10px;
 }
 
-.family-input-container .family-hint {
-  font-size: 11px;
+.family-input-container {
+  font-size: 16px;
+  color: #666;
+}
+
+.family-hint {
+  font-size: 13px;
   color: #666;
   margin-top: -5px;
   margin-left: 4px;
