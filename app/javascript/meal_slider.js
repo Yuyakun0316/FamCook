@@ -1,7 +1,7 @@
 document.addEventListener("turbo:load", () => {
   const track = document.querySelector(".meal-slider-track");
   if (!track || track.dataset.bound === "true") return; 
-  track.dataset.bound = "true"; // ← 重複実行防止！
+  track.dataset.bound = "true";
 
   const slides = document.querySelectorAll(".meal-slide");
   const prevBtn = document.querySelector(".meal-slider-nav.prev");
@@ -15,9 +15,6 @@ document.addEventListener("turbo:load", () => {
     track.style.transform = `translateX(-${currentIndex * 100}%)`;
   };
 
-  // ============================================
-  // 🔘 ボタンクリック
-  // ============================================
   if (prevBtn && nextBtn && totalSlides > 1) {
     prevBtn.addEventListener("click", () => {
       currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
@@ -30,9 +27,6 @@ document.addEventListener("turbo:load", () => {
     });
   }
 
-  // ============================================
-  // 👆 スワイプ処理（ループ対応・追随式）
-  // ============================================
   let startX = 0;
   let currentTranslate = 0;
   let previousTranslate = 0;
@@ -52,10 +46,11 @@ document.addEventListener("turbo:load", () => {
 
   track.addEventListener("touchmove", (e) => {
     if (!dragging) return;
+    e.preventDefault();
     const x = e.touches[0].clientX;
     currentTranslate = previousTranslate + (x - startX);
     setPosition(currentTranslate);
-  });
+  }, { passive: false });
 
   track.addEventListener("touchend", () => {
     if (!dragging) return;
@@ -67,5 +62,9 @@ document.addEventListener("turbo:load", () => {
     else if (moved > 50) currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
 
     updateSlider();
+
+    startX = 0;
+    currentTranslate = 0;
+    previousTranslate = -currentIndex * track.clientWidth;
   });
 });
