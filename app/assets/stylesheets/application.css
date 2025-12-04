@@ -145,3 +145,16 @@ html, body {
 .nav-item.active:hover {
   opacity: 0.8;
 }
+
+input, select, textarea, button {
+  font-size: 16px !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 16px !important;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+}
