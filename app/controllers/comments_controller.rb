@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_meal
+  before_action :check_family!
   before_action :set_comment, only: :destroy
   before_action :authorize_comment!, only: :destroy
 
@@ -12,7 +13,6 @@ class CommentsController < ApplicationController
       if @comment.save
         @comments = @meal.comments.includes(:user).order(created_at: :desc)
         format.html { redirect_to meal_path(@meal), notice: '評価とコメントを投稿しました！' }
-
         format.json do
           render json: {
             success: true,
@@ -36,7 +36,6 @@ class CommentsController < ApplicationController
           @average_rating = @meal.average_rating
           render 'meals/show', status: :unprocessable_entity
         end
-
         format.json do
           render json: {
             success: false,
@@ -56,6 +55,12 @@ class CommentsController < ApplicationController
 
   def set_meal
     @meal = Meal.find(params[:meal_id])
+  end
+
+  def check_family!
+    return if @meal.family_id == current_user.family_id
+
+    redirect_to meals_path, alert: 'アクセス権限がありません。'
   end
 
   def set_comment
