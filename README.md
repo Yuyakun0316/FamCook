@@ -30,9 +30,15 @@ FamCook は、家族みんなで毎日の献立を共有したり、評価した
 
 ---
 
+## 🔐 Basic認証
+-  **ID**       : famcook
+-  **パスワード**  : 0316
+
+---
+
 ## 👤 テスト用アカウント  
 -  **ログインID** : test@gmail.com
--  **パスワード**  : test1234
+-  **パスワード**  : Test1234
 
    ### 新規登録時
 -  **メールアドレス** :ご自身のアドレス
@@ -108,7 +114,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 ---
 
 ### 📝 8. メモ機能
-- 買い物・料理・メモのカテゴリごとに保存可能（カテゴリ未選択時はメモに保存）  
+- 買い物・料理・その他のカテゴリごとに保存可能（カテゴリ未選択時はその他に保存）  
 - 投稿したメモはピン留め・削除できます（投稿者のみ）  
 - 家族全員で共有され、相談や計画に活用できます  
 
@@ -230,7 +236,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 **[メモ画面]**
 
-[![Image from Gyazo](https://i.gyazo.com/b87bc52c8940b98dbc8592d335f3e926.gif)](https://gyazo.com/b87bc52c8940b98dbc8592d335f3e926)
+[![Image from Gyazo](https://i.gyazo.com/62a5d2ddd417a3b281526c01f28e6402.gif)](https://gyazo.com/62a5d2ddd417a3b281526c01f28e6402)
 
 ---
 
@@ -260,7 +266,7 @@ FamCook の基本的な利用手順は以下のとおりです。
 
 **[画面移動]**  
 
-[![Image from Gyazo](https://i.gyazo.com/951d8a91680fb6fdcf439b89693108b3.gif)](https://gyazo.com/951d8a91680fb6fdcf439b89693108b3)
+[![Image from Gyazo](https://i.gyazo.com/8f02797fe7837c834393b3a9ab45dec0.gif)](https://gyazo.com/8f02797fe7837c834393b3a9ab45dec0)
 
 ---
 
