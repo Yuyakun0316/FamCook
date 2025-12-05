@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :user do
-    name { "テスト太郎" }
+    name { 'テスト太郎' }
     email { Faker::Internet.email }
-    password { "password" }
+    password { 'password' }
     association :family
   end
 end

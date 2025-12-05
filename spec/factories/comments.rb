@@ -3,6 +3,6 @@ FactoryBot.define do
     association :user
     association :meal
     rating { 3 }
-    content { "おいしかった！" }
+    content { 'おいしかった！' }
   end
 end
