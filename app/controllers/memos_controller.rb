@@ -1,7 +1,7 @@
 class MemosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_memo, only: [:destroy, :toggle_pin]
-  before_action :check_family, only: [:destroy, :toggle_pin]
+  before_action :authorize_memo!, only: [:destroy, :toggle_pin]
 
   def index
     @memo = Memo.new
@@ -24,15 +24,13 @@ class MemosController < ApplicationController
     if @memo.save
       redirect_to memos_path, notice: 'メモを保存しました✨'
     else
-      @memos = Memo.where(family_id: current_user.family_id)
-                   .order(pinned: :desc, created_at: :desc)
+      @memos = Memo.where(family_id: current_user.family_id).order(pinned: :desc, created_at: :desc)
       render :index, status: :unprocessable_entity
     end
   end
 
   def destroy
     @memo.destroy
-
     respond_to do |format|
       format.json { render json: { success: true, id: @memo.id } }
       format.html { redirect_to memos_path(category: params[:category]), notice: 'メモを削除しました' }
@@ -41,7 +39,6 @@ class MemosController < ApplicationController
 
   def toggle_pin
     @memo.update(pinned: !@memo.pinned)
-
     respond_to do |format|
       format.json { render json: { success: true, pinned: @memo.pinned } }
       format.html { redirect_to memos_path(category: params[:category]), notice: 'ピンを更新しました📌' }
@@ -54,8 +51,10 @@ class MemosController < ApplicationController
     @memo = Memo.find(params[:id])
   end
 
-  def check_family
-    redirect_to memos_path, alert: 'アクセス権限がありません。' if @memo.family_id != current_user.family_id
+  def authorize_memo!
+    unless @memo.family_id == current_user.family_id && @memo.user_id == current_user.id
+      redirect_to memos_path, alert: '権限がありません。'
+    end
   end
 
   def memo_params
