@@ -33,7 +33,7 @@ class Meal < ApplicationRecord
   def average_rating
     return 0 unless comments.any?
 
-    comments.average(:rating).round(1)
+    comments.average(:rating).to_f.round(1)
   end
 
   private
