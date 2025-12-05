@@ -11,7 +11,7 @@
         class: "memo-btn idea #{'active' if params[:category] == 'idea'}",
         data: { category: "idea" } %>
 
-    <%= link_to "📒 メモ", memos_path(category: "note"), 
+    <%= link_to "📒 その他", memos_path(category: "note"), 
         class: "memo-btn note #{'active' if params[:category] == 'note'}",
         data: { category: "note" } %>
   </div>
@@ -60,7 +60,7 @@
             <% when "idea" %>
               💡 作りたい料理
             <% when "note" %>
-              📒 メモ
+              📒 その他
             <% else %>
               📌 <%= memo.category %>
             <% end %>
