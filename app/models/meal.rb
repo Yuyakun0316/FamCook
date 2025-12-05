@@ -28,6 +28,7 @@ class Meal < ApplicationRecord
   validates :date, presence: true
   validates :meal_type, presence: true
   validates :icon_type, presence: true
+  validate :validate_image_count
 
   def average_rating
     return 0 unless comments.any?
