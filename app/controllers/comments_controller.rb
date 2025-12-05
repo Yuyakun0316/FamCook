@@ -60,7 +60,7 @@ class CommentsController < ApplicationController
   def check_family!
     return if @meal.family_id == current_user.family_id
 
-    redirect_to meals_path, alert: "アクセス権限がありません。"
+    redirect_to meals_path, alert: 'アクセス権限がありません。'
   end
 
   def set_comment

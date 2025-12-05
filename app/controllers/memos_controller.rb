@@ -52,9 +52,9 @@ class MemosController < ApplicationController
   end
 
   def authorize_memo!
-    unless @memo.family_id == current_user.family_id && @memo.user_id == current_user.id
-      redirect_to memos_path, alert: '権限がありません。'
-    end
+    return if @memo.family_id == current_user.family_id && @memo.user_id == current_user.id
+
+    redirect_to memos_path, alert: '権限がありません。'
   end
 
   def memo_params
