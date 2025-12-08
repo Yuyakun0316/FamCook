@@ -78,3 +78,8 @@ RSpec.configure do |config|
     FileUtils.rm_rf(ActiveStorage::Blob.service.root)
   end
 end
+
+# Devise system test 用
+RSpec.configure do |config|
+  config.include Devise::Test::IntegrationHelpers, type: :system
+end
