@@ -116,3 +116,21 @@ body {
 .error-messages p {
   margin: 0;
 }
+
+/* ゲストログイン */
+.btn-guest {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff9800; /* オレンジ系 */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.btn-guest:hover {
+  background-color: #e68a00;
+  color: white;
+}

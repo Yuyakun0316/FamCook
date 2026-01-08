@@ -15,6 +15,11 @@
       <%= f.submit "ログイン", class: "auth-button" %>
     <% end %>
 
+    <%# ゲストログイン %>
+    <div class="guest-login">
+      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, data: { turbo_method: :post }, class: 'btn-guest' %>
+    </div>
+
     <p class="auth-link">
       パスワードを忘れた方は <%= link_to "こちら", "#" %>
     </p>

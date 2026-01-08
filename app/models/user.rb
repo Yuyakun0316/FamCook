@@ -16,5 +16,9 @@ class User < ApplicationRecord
     Family.find_by(owner_id: id)
   end
 
+  def self.guest
+  find_by!(email: 'guest@example.com')
+  end
+
   validates :name, presence: true, length: { maximum: 20 }
 end
