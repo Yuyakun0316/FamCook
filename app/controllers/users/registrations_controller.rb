@@ -1,4 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  # 更新と削除の前にゲストチェックを行う
+  before_action :ensure_normal_user, only: [:update, :destroy]
+
   def create
     build_resource(sign_up_params)
 
@@ -42,6 +45,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
+  # ゲストユーザーならトップへリダイレクトさせる
+  def ensure_normal_user
+    if resource.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません。'
+    end
+  end
 
   def sign_up_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :family_code)
